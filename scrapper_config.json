@@ -1,0 +1,8 @@
+{
+    "pullLinks": {
+        "regex": "<a href=\"(.*?)\">", 
+        "exclude": "latest", 
+        "include": "None"
+    }, 
+    "page": "http://logs.nodejs.org/node.js/index"
+}
