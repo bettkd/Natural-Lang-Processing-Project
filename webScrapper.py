@@ -19,21 +19,23 @@ def readSourceCode(page):
 
 def pullItems(sourceCode, exclude=None, include=None, regex=""): # Exclude request overrides include
 	try:
-		links = re.findall(r'%s'%regex, sourceCode)
+		items = re.findall(r'%s'%regex, sourceCode)
+
+		print items
 		if exclude:
-			xlinks = []
-			for link in links:
-				if link not in exclude:
-					xlinks.append(link)
-			return xlinks
+			x_items = []
+			for item in items:
+				if item not in exclude:
+					x_items.append(item)
+			return x_items
 		elif include:
-			ilinks = []
-			for link in links:
-				if link in include:
-					ilinks.append(link)
-			return ilinks
+			i_items = []
+			for item in items:
+				if item in include:
+					i_items.append(item)
+			return i_items
 		else:
-			return links
+			return items
 	except Exception, e:
 		print str(e)
 
@@ -48,6 +50,7 @@ def readJson(jFile):
 	with open(jFile, "r") as data_file:
 		config = json.load(data_file)
 	data_file.close()
+	return config
 
 def writeJson(jFile, data):
 	with open(jFile, 'w') as outfile:
@@ -56,7 +59,7 @@ def writeJson(jFile, data):
 
 def execute():
 	#readConfig
-	config = readConfig('scrapper_config.json')
+	config = readJson(jFile='scrapper_config.json')
 	#readPage
 	page = config["page"]
 	sourceCode = readSourceCode(page=page).encode('utf-8')
@@ -66,15 +69,20 @@ def execute():
 	exclude = pullLinks['exclude']
 	links = pullItems(sourceCode=sourceCode, regex=regex, exclude=exclude)
 	dataLinks = {"links":["http://logs.nodejs.org/node.js/"+l for l in links]}
-	writeJson('dataLinks.txt', data=dataLinks)
+	writeJson(jFile='dataLinks.txt', data=dataLinks)
 	#pullContent
 	pullCont = config["pullContent"]
 	regex1 = pullCont["regex"]
 	include1 = pullCont["include"]
-	
-	for page1 in dataLinks:
+	content = dict()
+	#print dataLinks["links"]
+	for page1 in dataLinks["links"]:
 		sourceCode1 = readSourceCode(page=page1)
-		pullItems(sourceCode=sourceCode1, regex=regex1, include=include1)
+		(user, cont, timStamp) = pullItems(sourceCode=sourceCode1, regex=regex1, include=include1)
+		#print cont
+		#content[page1] = {"user":user, "content":cont, "timeStamp":timeStamp}
+
+	#print content
 
 
 
@@ -88,7 +96,7 @@ def main():
 	#	json.dump(data1, outfile, indent=4)
 
 
-	
+	execute()
 
 	
 	
