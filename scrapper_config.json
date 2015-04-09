@@ -1,4 +1,9 @@
 {
+	"pullContent": {
+		"regex": "<td class=\"nick\">&lt;(.*?)&gt;</td>.*?\"content\">(.*?)</td>.*?name=\"(.*?)\"",
+		"exclude": "None",
+		"include": "&gt;"
+	},
     "pullLinks": {
         "regex": "<a href=\"(.*?)\">", 
         "exclude": "latest", 
