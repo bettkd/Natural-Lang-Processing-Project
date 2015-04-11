@@ -1,13 +1,14 @@
 {
 	"pullContent": {
-		"regex": "<td class=\"nick\">&lt;(.*?)&gt;</td>.*?\"content\">(.*?)</td>.*?name=\"(.*?)\"",
+		"regex": "<td class=\"nick\">(.*?)&gt;</td>.*?\"content\">(.*?)</td>.*?name=\"(.*?)\"",
 		"exclude": "None",
-		"include": "&gt;"
+		"include": "&lt;"
 	},
     "pullLinks": {
         "regex": "<a href=\"(.*?)\">", 
         "exclude": "latest", 
         "include": "None"
     }, 
-    "page": "http://logs.nodejs.org/node.js/index"
+    "page": "http://logs.nodejs.org/node.js/index",
+    "delim": "|&%&|"
 }

@@ -5,6 +5,11 @@ from cookielib import CookieJar
 import re
 import time
 import json
+import sys
+reload(sys)
+sys.setdefaultencoding('UTF8')
+
+start = time.time()
 
 cj = CookieJar() # Not absolutely necessary but recommended
 opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
@@ -17,21 +22,25 @@ def readSourceCode(page):
 	except Exception, e:
 		print str(e)
 
-def pullItems(sourceCode, exclude=None, include=None, regex=""): # Exclude request overrides include
+def pullItems(sourceCode, exclude=None, include=None, regex="", delim=""): # Exclude request overrides include
 	try:
 		items = re.findall(r'%s'%regex, sourceCode)
-
-		print items
+		if isinstance(items[0], tuple):
+			items1 = []
+			for item in items:
+				item =  delim.join(item)
+				items1.append(item)
+			items =  items1
 		if exclude:
 			x_items = []
 			for item in items:
-				if item not in exclude:
+				if exclude not in item:
 					x_items.append(item)
 			return x_items
 		elif include:
 			i_items = []
 			for item in items:
-				if item in include:
+				if include in item:
 					i_items.append(item)
 			return i_items
 		else:
@@ -62,7 +71,7 @@ def execute():
 	config = readJson(jFile='scrapper_config.json')
 	#readPage
 	page = config["page"]
-	sourceCode = readSourceCode(page=page).encode('utf-8')
+	sourceCode = readSourceCode(page=page)
 	#pullLinks
 	pullLinks = config["pullLinks"]
 	regex = pullLinks['regex']
@@ -74,18 +83,27 @@ def execute():
 	pullCont = config["pullContent"]
 	regex1 = pullCont["regex"]
 	include1 = pullCont["include"]
+	delim = config["delim"]
 	content = dict()
 	#print dataLinks["links"]
+	count = 1
 	for page1 in dataLinks["links"]:
 		sourceCode1 = readSourceCode(page=page1)
-		(user, cont, timStamp) = pullItems(sourceCode=sourceCode1, regex=regex1, include=include1)
-		#print cont
-		#content[page1] = {"user":user, "content":cont, "timeStamp":timeStamp}
-
-	#print content
-
-
-
+		conts = pullItems(sourceCode=sourceCode1, regex=regex1, include=include1, delim=delim)
+		contArray = []
+		for cont in conts:
+			entry = list(cont.split(delim))
+			#user, post, timStamp = 
+			contArray.append(entry)
+		dateStamp = re.findall(r'http.*?js/(.*?)$', page1)[0]
+		content[dateStamp] = contArray
+		writeJson(jFile="Data/%s.txt"%dateStamp, data=content)
+		#console display
+		duration = int((time.time() - start))
+		print "Writing: Data/%s.txt ...... %d of %d .... Time elapsed: %d sec."%(dateStamp, count, len(dataLinks["links"]), duration)
+		count+=1
+	print "Done!"
+	
 
 def main():
 	#page = 'http://logs.nodejs.org/node.js/index'
@@ -95,10 +113,11 @@ def main():
 	#with open('scrapper_config.json', 'w') as outfile:
 	#	json.dump(data1, outfile, indent=4)
 
-
-	execute()
-
 	
+	execute()
+	duration = int((time.time() - start)/60)
+	print "Time elapsed: %d minutes"%duration
+
 	
 	#for link in links:
 	#	print link

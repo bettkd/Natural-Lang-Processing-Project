@@ -1,0 +1,5334 @@
+{
+    "2015-04-10": [
+        [
+            "&lt;yoshu", 
+            "anyone available for a gulp/browserify question?", 
+            "00:02:56.342"
+        ], 
+        [
+            "&lt;Seventoes", 
+            "don't ask to ask, just ask :P", 
+            "00:03:02.130"
+        ], 
+        [
+            "&lt;nashant_", 
+            "ljharb: so how would I test my api and save a reference to another document? At the moment I have   contact.groups = req.body.contact.groups; contact.update(function(err)...);", 
+            "00:05:00.501"
+        ], 
+        [
+            "&lt;nashant_", 
+            "I'm assuming that's not right, as it's not working", 
+            "00:05:19.256"
+        ], 
+        [
+            "&lt;ljharb", 
+            "nashant_: what do you mean by &quot;not working&quot;", 
+            "00:05:24.295"
+        ], 
+        [
+            "&lt;ljharb", 
+            "also fyi there's #mongoosejs for mongoose questions", 
+            "00:05:42.755"
+        ], 
+        [
+            "&lt;nashant_", 
+            "ljharb: It's saving an empty array", 
+            "00:06:04.098"
+        ], 
+        [
+            "&lt;nashant_", 
+            "Yeah, but it's dead in there", 
+            "00:06:16.904"
+        ], 
+        [
+            "&lt;nashant_", 
+            "apart from you!", 
+            "00:06:18.866"
+        ], 
+        [
+            "&lt;ljharb", 
+            "you didn't even ask :-p", 
+            "00:06:20.920"
+        ], 
+        [
+            "&lt;ljharb", 
+            "lol true", 
+            "00:06:24.264"
+        ], 
+        [
+            "&lt;ljharb", 
+            "ok so why not `contact.save`?", 
+            "00:06:51.126"
+        ], 
+        [
+            "&lt;ljharb", 
+            "also i'm not sure you can just reassign the array", 
+            "00:07:00.672"
+        ], 
+        [
+            "&lt;ljharb", 
+            "what's the schema for contact look like?", 
+            "00:07:03.157"
+        ], 
+        [
+            "&lt;nashant_", 
+            "I'm going to be trying to minimise data transfer, and I wanted to do conditional updates", 
+            "00:07:48.103"
+        ], 
+        [
+            "&lt;ljharb", 
+            "doesn't mongoose save do that already?", 
+            "00:08:21.630"
+        ], 
+        [
+            "&lt;nashant_", 
+            "It keeps overwriting the whole doc", 
+            "00:08:25.573"
+        ], 
+        [
+            "&lt;ljharb", 
+            "<a href=\"http://mongoosejs.com/docs/api.html\" target=\"_blank\" rel=\"nofollow\">http://mongoosejs.com/docs/api.html</a>", 
+            "00:08:29.830"
+        ], 
+        [
+            "&lt;ljharb", 
+            "sorry <a href=\"http://mongoosejs.com/docs/api.html#document_Document-update\" target=\"_blank\" rel=\"nofollow\">http://mongoosejs.com/docs/api.html#document_Document-update</a>", 
+            "00:08:30.997"
+        ], 
+        [
+            "&lt;nashant_", 
+            "<a href=\"https://gist.github.com/nashant/e9f215d20ee5aa19be17\" target=\"_blank\" rel=\"nofollow\">https://gist.github.com/nashant/e9f215d20ee5aa19be17</a> that's the contact schema", 
+            "00:10:32.247"
+        ], 
+        [
+            "&lt;yoshu", 
+            "I\u2019m trying to use gulp to run browserify and do some node tests: this is the task <a href=\"https://gist.github.com/tucsonlabs/7e3df4670c56bb418e53\" target=\"_blank\" rel=\"nofollow\">https://gist.github.com/tucsonlabs/7e3df4670c56bb418e53</a>", 
+            "00:11:19.118"
+        ], 
+        [
+            "&lt;yoshu", 
+            "it\u2019s exporting test/test.js AND test/test/test.js", 
+            "00:11:42.252"
+        ], 
+        [
+            "&lt;yoshu", 
+            "but the modules aren\u2019t being found in the bunded test.js files. Any ideas?", 
+            "00:11:47.141"
+        ], 
+        [
+            "&lt;nashant_", 
+            "That's what I'm gonna do. Do you know if there'a a query builder? so you can do multiple updates, but defer them, then call an execute and it does them all in one go", 
+            "00:12:35.194"
+        ], 
+        [
+            "&lt;ljharb", 
+            "nashant_: there should be yes", 
+            "00:12:41.225"
+        ], 
+        [
+            "&lt;nashant_", 
+            "ljharb: And how about that schema? How would I go about saving the array of group references?", 
+            "00:14:54.686"
+        ], 
+        [
+            "&lt;ljharb", 
+            "so since groups is DBRefs, i wouldn't use assignment to replace it", 
+            "00:15:58.621"
+        ], 
+        [
+            "&lt;ljharb", 
+            "i'd .push into the array to add, and .splice or something to remove", 
+            "00:16:05.211"
+        ], 
+        [
+            "&lt;nashant_", 
+            "ah, ok", 
+            "00:16:19.748"
+        ], 
+        [
+            "&lt;ljharb", 
+            "and also removing the ref doesn't necessarily remove the ContactGroup.", 
+            "00:16:27.682"
+        ], 
+        [
+            "&lt;ljharb", 
+            "i haven't used mongoose in awhile so i'm not sure how well the dbref stuff works", 
+            "00:16:30.262"
+        ], 
+        [
+            "&lt;nashant_", 
+            "wouldn't assignment essentially be the same as pushing/splicing?", 
+            "00:17:31.185"
+        ], 
+        [
+            "&lt;ljharb", 
+            "not if mongoose is keeping a reference to the original array somewhere.", 
+            "00:17:35.256"
+        ], 
+        [
+            "&lt;nashant_", 
+            "Sat out on my balcony and all I can smell is popcorn. Who makes popcorn at 1.15am on a thursday??", 
+            "00:18:04.433"
+        ], 
+        [
+            "&lt;ljharb", 
+            "someone who knows how to live, that's who", 
+            "00:18:18.592"
+        ], 
+        [
+            "&lt;nashant_", 
+            "well, friday technically", 
+            "00:18:30.372"
+        ], 
+        [
+            "&lt;nashant_", 
+            "Someone who's got their live completely in order", 
+            "00:19:01.518"
+        ], 
+        [
+            "&lt;ljharb", 
+            "same answer applies to the question &quot;who considers 1 box of kraft macaroni and cheese 1 serving&quot;", 
+            "00:19:25.962"
+        ], 
+        [
+            "&lt;nashant_", 
+            "That means nothing to me. We don't have that over here", 
+            "00:19:54.930"
+        ], 
+        [
+            "&lt;ljharb", 
+            "horrors", 
+            "00:20:17.223"
+        ], 
+        [
+            "&lt;nashant_", 
+            "I've just posted my update api function as a comment on that gist.", 
+            "00:20:30.611"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "Hey guys I want to grab only one element from a webpage, and then send it to a serial port(for arduino display). The tag is: &lt;span class=&quot;thebutton-numeral&quot; id=&quot;thebutton-s-10s&quot;&gt;5&lt;/span&gt; and the website is: <a href=\"http://www.reddit.com/r/thebutton\" target=\"_blank\" rel=\"nofollow\">http://www.reddit.com/r/thebutton</a>", 
+            "00:20:53.082"
+        ], 
+        [
+            "&lt;nashant_", 
+            "I'm all into batch cooking now. Slow cooker, and I only have to cook 4 times in a month.", 
+            "00:20:54.458"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "If any can help, it's appreciated!", 
+            "00:21:16.481"
+        ], 
+        [
+            "&lt;cslcm", 
+            "hey. I'm having an issue with Forever &quot;losing&quot; my processes when used with the --watch flag. <a href=\"http://www.pastebin.ca/2970127\" target=\"_blank\" rel=\"nofollow\">http://www.pastebin.ca/2970127</a> - could anyone suggest what might be wrong?", 
+            "00:21:55.886"
+        ], 
+        [
+            "&lt;Seventoes", 
+            "DarkElement: you'll probably want phantomjs since that button is likely not served in the initial server response", 
+            "00:23:18.509"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "Seventoes: Where can I start", 
+            "00:26:58.548"
+        ], 
+        [
+            "&lt;Seventoes", 
+            "DarkElement: phantomjs docs :P", 
+            "00:27:01.251"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "shit :\\", 
+            "00:27:16.236"
+        ], 
+        [
+            "&lt;Seventoes", 
+            "learn to read docs, it'll save you tons of time and frustration in the future", 
+            "00:27:44.304"
+        ], 
+        [
+            "&lt;Seventoes", 
+            "most big libraries have tutorials too that'll teach basic concepts, those are a good place to start normally", 
+            "00:28:01.510"
+        ], 
+        [
+            "&lt;Seventoes", 
+            "then you can take those concepts and fill them out with docs as needed", 
+            "00:28:01.803"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "alright, I just didnt want to spend too much time figuring out this simple thing", 
+            "00:28:12.834"
+        ], 
+        [
+            "&lt;Seventoes", 
+            "it's not a simple thing you're trying to do :P", 
+            "00:28:22.563"
+        ], 
+        [
+            "&lt;Seventoes", 
+            "you're trying to extract an element from a page that's generated via javascript", 
+            "00:28:29.372"
+        ], 
+        [
+            "&lt;DarkElement", 
+            ":(", 
+            "00:28:55.259"
+        ], 
+        [
+            "&lt;Seventoes", 
+            "phantom makes it easy, it won't take you too long", 
+            "00:29:24.283"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "Alright", 
+            "00:30:12.280"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "I should learn it, anyway.", 
+            "00:30:25.308"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "It will be a better Selenium Driver than Firefox im told", 
+            "00:30:46.447"
+        ], 
+        [
+            "&lt;Seventoes", 
+            "*shrug* phantom's just the one i know, i haven't really used any of those things", 
+            "00:30:59.875"
+        ], 
+        [
+            "&lt;nashant_", 
+            "ljharb: Got it fixed. Needed to iterate and cast them to ObjectId then push. It doesn't seem to work with update though, just save", 
+            "00:35:52.525"
+        ], 
+        [
+            "&lt;yoshu", 
+            "Seventoes feel free to chim in", 
+            "00:40:15.652"
+        ], 
+        [
+            "&lt;timwis", 
+            "Hey guys, I have two CSV files and i'm trying to compare addresses between them to find matches, but the addresses are in slightly different formats (ie. 1234 MAIN ST vs 1234 E MAIN STREET UNIT A) -- what's the best way to find &quot;similar&quot; to narrow it down so I can verify manually?", 
+            "00:46:14.367"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "you guys know why i cant get the element by id in this tag? &lt;span class=&quot;thebutton-numeral&quot; id=&quot;thebutton-s-10s&quot;&gt;5&lt;/span&gt;", 
+            "00:50:21.584"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "I am confusion", 
+            "00:50:46.851"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "^phantomjs", 
+            "00:53:32.164"
+        ], 
+        [
+            "&lt;Seventoes", 
+            "code?", 
+            "00:53:36.525"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "sorry", 
+            "00:53:46.523"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "<a href=\"http://paste.pound-python.org/show/ykmzDr7cVkNKHoL1kUdO/\" target=\"_blank\" rel=\"nofollow\">http://paste.pound-python.org/show/ykmzDr7cVkNKHoL1kUdO/</a>", 
+            "00:54:36.356"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "oops", 
+            "00:55:33.238"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "wrong code, here is correct stuff: <a href=\"http://paste.pound-python.org/show/7wv5pFI7E2UruEZHQVbU/\" target=\"_blank\" rel=\"nofollow\">http://paste.pound-python.org/show/7wv5pFI7E2UruEZHQVbU/</a>", 
+            "00:56:32.707"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "and I wasnt calling for textContent, my bad.", 
+            "00:56:45.178"
+        ], 
+        [
+            "&lt;kvda", 
+            "what did the console.log output? anything?", 
+            "00:57:33.043"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "it's working now, just not waiting for full page load before going.", 
+            "00:59:52.616"
+        ], 
+        [
+            "&lt;kvda", 
+            "you'd probably still an onready event right", 
+            "00:59:53.819"
+        ], 
+        [
+            "&lt;kvda", 
+            "im curious to know what the log printed out in the code you pasted though?", 
+            "01:00:15.439"
+        ], 
+        [
+            "&lt;kvda", 
+            "[HTMLElement]", 
+            "01:00:16.308"
+        ], 
+        [
+            "&lt;kvda", 
+            "?", 
+            "01:00:26.404"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "It printed [object Object]", 
+            "01:00:46.337"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "My code has an onready event now, still not working. How can I add in a manual delay? <a href=\"http://paste.pound-python.org/show/sHBSKpafZhZl90ECeJh7/\" target=\"_blank\" rel=\"nofollow\">http://paste.pound-python.org/show/sHBSKpafZhZl90ECeJh7/</a>", 
+            "01:01:00.991"
+        ], 
+        [
+            "&lt;kvda", 
+            "ah so that looks you getElementById wasn't the problem", 
+            "01:01:16.071"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "yea it was needing .textContent", 
+            "01:01:21.265"
+        ], 
+        [
+            "&lt;kvda", 
+            "have you tried CasperJS? from memory it makes these things easier", 
+            "01:01:47.729"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "I think i'll stick to phantomjs", 
+            "01:01:49.823"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "for now", 
+            "01:01:55.053"
+        ], 
+        [
+            "&lt;kvda", 
+            "casperjs sits on top of phantom and makes the api better", 
+            "01:02:07.333"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "gonna manual delay", 
+            "01:02:13.642"
+        ], 
+        [
+            "&lt;kvda", 
+            "yea try", 
+            "01:02:16.586"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "know how to implement this/", 
+            "01:03:10.371"
+        ], 
+        [
+            "&lt;kvda", 
+            "i'd work my way backwards a bit", 
+            "01:03:29.841"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "..", 
+            "01:04:07.192"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "isnt there a method to do this", 
+            "01:04:15.223"
+        ], 
+        [
+            "&lt;kvda", 
+            "with casperjs i think there is", 
+            "01:04:15.423"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "-_-", 
+            "01:04:24.082"
+        ], 
+        [
+            "&lt;kvda", 
+            "but im guessing as to what you're trying to do", 
+            "01:04:34.333"
+        ], 
+        [
+            "&lt;kvda", 
+            "just have a quick look at casperjs and see if it's anything tha tmight help", 
+            "01:04:40.233"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "I just want to use phantom js for now, ok?", 
+            "01:05:01.341"
+        ], 
+        [
+            "&lt;kvda", 
+            "ok", 
+            "01:05:03.690"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "I want to keep open the page, so that it can keep getting new values from it. How can I make it sleep for the first time and only then", 
+            "01:10:14.524"
+        ], 
+        [
+            "&lt;kakashiAL", 
+            "res.send converts an object into json, whats the difference between res.send and res.json?", 
+            "01:24:33.431"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "alright guys I got the values, how can I make sure it keeps getting the timer as it updates, instead of the static value it has when it loads the page?", 
+            "01:26:14.063"
+        ], 
+        [
+            "&lt;DarkElement", 
+            "I got that as well", 
+            "02:11:26.148"
+        ], 
+        [
+            "&lt;owen1", 
+            "any noders using make? <a href=\"https://news.ycombinator.com/item?id=9350206\" target=\"_blank\" rel=\"nofollow\">https://news.ycombinator.com/item?id=9350206</a> i currently use multiple bash scripts + node executables", 
+            "02:21:21.330"
+        ], 
+        [
+            "&lt;TyrfingMjolnir", 
+            "I wrote a piece similar to this: <a href=\"http://coenraets.org/blog/2012/10/creating-a-rest-api-using-node-js-express-and-mongodb/\" target=\"_blank\" rel=\"nofollow\">http://coenraets.org/blog/2012/10/creating-a-rest-api-using-node-js-express-and-mongodb/</a> a while back; I would like to add authentication how would I do this? From what I understand there will be 2 levels, 1 for querying for the existance of the user in the db, but there should also be a level of authentication between the HTML5/CSS3/JS front end and the API", 
+            "03:28:06.802"
+        ], 
+        [
+            "&lt;TyrfingMjolnir", 
+            "passport solves this between front end and backend? While querying the user will be like just calling any other API.", 
+            "03:29:35.920"
+        ], 
+        [
+            "&lt;TyrfingMjolnir", 
+            "Token or 0-Auth?", 
+            "03:30:04.738"
+        ], 
+        [
+            "&lt;jaawerth", 
+            "TyrfingMjolnir: passport has &quot;strategies&quot; for various types of authentication backends. &quot;passport-local&quot; is typically what you do for a custom one - their docs have examples for doing it with a db", 
+            "03:30:54.601"
+        ], 
+        [
+            "&lt;jaawerth", 
+            "TyrfingMjolnir: <a href=\"http://passportjs.org/guide/username-password/\" target=\"_blank\" rel=\"nofollow\">http://passportjs.org/guide/username-password/</a>", 
+            "03:31:35.172"
+        ], 
+        [
+            "&lt;TyrfingMjolnir", 
+            "jaawerth: That is the one I'd use", 
+            "03:32:46.539"
+        ], 
+        [
+            "&lt;TyrfingMjolnir", 
+            "But where do I choose Basic &amp; Digest, OAuth, OAuth 2.0, or tokenized?", 
+            "03:33:15.915"
+        ], 
+        [
+            "&lt;TyrfingMjolnir", 
+            "Or is the clue to have passport choose this for me?", 
+            "03:33:30.740"
+        ], 
+        [
+            "&lt;jaawerth", 
+            "well, oauth stuff is for distributed.. basically SSO. That's more complicated if you want to create your own", 
+            "03:33:31.879"
+        ], 
+        [
+            "&lt;TyrfingMjolnir", 
+            "<a href=\"https://auth0.com/blog/2014/01/15/auth-with-socket-io/\" target=\"_blank\" rel=\"nofollow\">https://auth0.com/blog/2014/01/15/auth-with-socket-io/</a>", 
+            "03:33:57.301"
+        ], 
+        [
+            "&lt;jaawerth", 
+            "in general I recommend using jwt, it's really the best way when dealing with REST", 
+            "03:34:08.158"
+        ], 
+        [
+            "&lt;jaawerth", 
+            "(you can use it with sockets too)", 
+            "03:34:20.649"
+        ], 
+        [
+            "&lt;jaawerth", 
+            "and if you're using angular (which I know you were for a while at least), or any other SPA, yeah", 
+            "03:34:24.778"
+        ], 
+        [
+            "&lt;jaawerth", 
+            "you can do it manually with passport-local but I believe there's also a passport-jwt strategy", 
+            "03:34:38.062"
+        ], 
+        [
+            "&lt;jaawerth", 
+            "I've never used it but the docs should get you going", 
+            "03:35:14.382"
+        ], 
+        [
+            "&lt;jaawerth", 
+            "note that the passport-jwt strategy isn't an official one from the passport folks. nothing wrong with that, per se, but your mileage may vary", 
+            "03:36:02.858"
+        ], 
+        [
+            "&lt;TyrfingMjolnir", 
+            "<a href=\"http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html\" target=\"_blank\" rel=\"nofollow\">http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html</a> ?", 
+            "03:36:13.280"
+        ], 
+        [
+            "&lt;jaawerth", 
+            "OAUTH is overkill unless you need SSO", 
+            "03:36:46.117"
+        ], 
+        [
+            "&lt;trewq", 
+            "I am new to node.js and currently use console.log to debug. I would like a recommendation on how I can log to a file - I prefer something simple without bells and whistles", 
+            "03:36:54.596"
+        ], 
+        [
+            "&lt;TyrfingMjolnir", 
+            "trewq: How could it be simpler than console.log / console.dir?", 
+            "03:37:46.805"
+        ], 
+        [
+            "&lt;jaawerth", 
+            "trewq: well, for really simple ones you can search npm - the one I love is winston. You can create multiple loggers for diferent things, or use one and choose different transports - including file, console, and various database options if you install the optional modules for them", 
+            "03:37:53.276"
+        ], 
+        [
+            "&lt;TyrfingMjolnir", 
+            "There is one with syntax coloring", 
+            "03:38:17.326"
+        ], 
+        [
+            "&lt;TyrfingMjolnir", 
+            "But that's probably too much already", 
+            "03:38:54.389"
+        ], 
+        [
+            "&lt;trewq", 
+            "TyrfingMjolnir: console.log logs to the console and I want to log to a file", 
+            "03:39:12.595"
+        ], 
+        [
+            "&lt;TyrfingMjolnir", 
+            "jaawerth: Yes, AngularJS and iOS are my frontends for now", 
+            "03:39:23.778"
+        ], 
+        [
+            "&lt;TyrfingMjolnir", 
+            "trewq: I just write to file using fs", 
+            "03:39:32.606"
+        ], 
+        [
+            "&lt;ljharb", 
+            "trewq: `node app.js &gt; file` ?", 
+            "03:39:40.067"
+        ], 
+        [
+            "&lt;TyrfingMjolnir", 
+            "<a href=\"https://nodejs.org/api/fs.html\" target=\"_blank\" rel=\"nofollow\">https://nodejs.org/api/fs.html</a>", 
+            "03:40:02.672"
+        ], 
+        [
+            "&lt;jaawerth", 
+            "haha, yes, piping to a file would be simplest", 
+            "03:40:09.140"
+        ], 
+        [
+            "&lt;trewq", 
+            "ljharb: good point. I use supervisor to kick off the node server so maybe I can log there", 
+            "03:40:45.298"
+        ], 
+        [
+            "&lt;trewq", 
+            "ok, I have winston, fs and piping - thanks for the recommendations and will look into them", 
+            "03:41:11.205"
+        ], 
+        [
+            "&lt;TyrfingMjolnir", 
+            "What is supervisor?", 
+            "03:41:40.606"
+        ], 
+        [
+            "&lt;jaawerth", 
+            "I've really been enjoying using winston and winston-couchdb to log right to a couchdb - I have a separate logger for the important/useful stuff that is replicated beween my dev boxes", 
+            "03:41:49.243"
+        ], 
+        [
+            "&lt;TyrfingMjolnir", 
+            "I would really like a good way to launch my APIs on debian or illumos", 
+            "03:42:28.273"
+        ], 
+        [
+            "&lt;TyrfingMjolnir", 
+            "pg 9.4 is also nice for logging", 
+            "03:42:32.070"
+        ], 
+        [
+            "&lt;TyrfingMjolnir", 
+            "I love the combination of table and JSON-type", 
+            "03:42:44.804"
+        ], 
+        [
+            "&lt;jaawerth", 
+            "yeah - I feel like document-based databases are good for logging though, since it naturally follows a &quot;file&quot; paradigm", 
+            "03:43:15.499"
+        ], 
+        [
+            "&lt;trewq", 
+            "TyrfingMjolnir: <a href=\"http://supervisord.org/\" target=\"_blank\" rel=\"nofollow\">http://supervisord.org/</a>", 
+            "03:44:25.234"
+        ], 
+        [
+            "&lt;jaawerth", 
+            "trewq: there's definitely simpler than winston, but I'd still suggest checking it out - the bells and whistles are mostly optional. you can pretty much configure it to use a file transport on run, and then just use it - it supports levels (silly, debug, verbose, info, warn, error) with convenience functions for each, or you can do winston.log('yourlevel', 'your message', &lt;optioanl metadata object&gt;)", 
+            "03:49:00.982"
+        ], 
+        [
+            "&lt;jaawerth", 
+            "you can define custom loggers or named transports or custom levels and such but you can just as easily pretend that stuff doesn't exist", 
+            "03:49:26.324"
+        ], 
+        [
+            "&lt;jaawerth", 
+            "one nice thing is you can define different log levels for each transport, so for example you could omit stuff from the console but still log it to file", 
+            "03:49:55.243"
+        ], 
+        [
+            "&lt;TyrfingMjolnir", 
+            "trewq: supervisord appears nice, but I'll end up with svc in illumos", 
+            "04:00:26.426"
+        ], 
+        [
+            "&lt;QF-MichaelK", 
+            "I want to have a blog that uses requirejs to host my canvas_game_api_thing so that I can edit modules and it will update.  I'd put up with decent looking node.js blog that I didn't have to continually do &quot;$browserify app.js &gt; bundle.js&quot;", 
+            "04:22:05.275"
+        ], 
+        [
+            "&lt;QF-MichaelK", 
+            "Any ideas?", 
+            "04:22:27.203"
+        ], 
+        [
+            "&lt;shlant", 
+            "anyone running nodemon inside docker? It doesn't seem to be picking up changes and I can only assume it has something to do with watching NFS volumes...", 
+            "04:25:01.364"
+        ], 
+        [
+            "&lt;andrew9183", 
+            "do you cache your jade templates ?", 
+            "04:26:00.711"
+        ], 
+        [
+            "&lt;Seventoes", 
+            "shlant: i'm not 100% sure, but i don't think NFS supports change notifications", 
+            "04:27:11.359"
+        ], 
+        [
+            "&lt;shlant", 
+            "Seventoes: all I know is that I hit this with Watchify and he had to implement some sort of polling option: <a href=\"https://github.com/substack/watchify#var-w--watchifyb-opts\" target=\"_blank\" rel=\"nofollow\">https://github.com/substack/watchify#var-w--watchifyb-opts</a>", 
+            "04:30:13.606"
+        ], 
+        [
+            "&lt;shlant", 
+            "Seventoes: do you know how nodemon tracks changes?", 
+            "04:30:36.233"
+        ], 
+        [
+            "&lt;Seventoes", 
+            "nope, never used it :D just guessing what might be the case with context clues ;)", 
+            "04:31:07.741"
+        ], 
+        [
+            "&lt;shlant", 
+            "remysharp: do you know if there is something I have to do to make nodemon work with boot2docker? it's not seeing changes", 
+            "04:51:14.129"
+        ], 
+        [
+            "&lt;jsfull", 
+            "hi everyone, facing a couple of issues navigating couple of Google tools using JS (nightmare.js specifically): <a href=\"http://stackoverflow.com/questions/29553196/not-able-to-enter-value-click-on-certain-things-on-a-page-using-js\" target=\"_blank\" rel=\"nofollow\">http://stackoverflow.com/questions/29553196/not-able-to-enter-value-click-on-certain-things-on-a-page-using-js</a>", 
+            "04:55:25.613"
+        ], 
+        [
+            "&lt;compeman", 
+            "hi ops, it would be better if this channel provides &quot;Daily Tips&quot;", 
+            "05:36:11.883"
+        ], 
+        [
+            "&lt;Seventoes", 
+            "daily tips is a lot of work", 
+            "05:36:45.949"
+        ], 
+        [
+            "&lt;GreenJello", 
+            "there are many tips here every day :-)", 
+            "05:38:47.233"
+        ], 
+        [
+            "&lt;ljharb", 
+            "compeman: it's a chat room, not a newsletter :-p", 
+            "05:41:10.886"
+        ], 
+        [
+            "&lt;compeman", 
+            "ahhahah", 
+            "05:41:16.563"
+        ], 
+        [
+            "&lt;compeman", 
+            "yeah you all right", 
+            "05:41:50.215"
+        ], 
+        [
+            "&lt;compeman", 
+            "is anyone uses dalek?", 
+            "05:45:30.963"
+        ], 
+        [
+            "&lt;compeman", 
+            "looking for some easy npm modules for browser testing", 
+            "05:45:35.472"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "has anyone experienced node randomly not being able to find modules?", 
+            "06:03:23.252"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "n/m - it seems once you sudo npm install something, everything user installed is no longer accessible", 
+            "06:10:38.943"
+        ], 
+        [
+            "&lt;ljharb", 
+            "wait what", 
+            "06:10:54.920"
+        ], 
+        [
+            "&lt;ljharb", 
+            "why are you using sudo", 
+            "06:11:00.121"
+        ], 
+        [
+            "&lt;ljharb", 
+            "Soopaman: &quot;require&quot; isn't for global modules, only local ones. and you never want to use sudo for local installs.", 
+            "06:12:11.444"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "ljharb: all of a sudden node wasn't finding any of my modules", 
+            "06:13:39.388"
+        ], 
+        [
+            "&lt;Seventoes", 
+            "if you &quot;sudo npm install x&quot;, it'll create the module files as root", 
+            "06:13:50.381"
+        ], 
+        [
+            "&lt;Seventoes", 
+            "so the files might not be readable by your user after that", 
+            "06:13:55.074"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "so in the process of testing the installs, realized that i may have sleep sudo'd", 
+            "06:14:09.242"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "what is the best way to &quot;refresh&quot; my node install", 
+            "06:14:13.641"
+        ], 
+        [
+            "&lt;Seventoes", 
+            "rm -rf node_modules; npm install", 
+            "06:14:18.259"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "considering the sudo corruption", 
+            "06:14:26.352"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "from local, or root?", 
+            "06:14:30.300"
+        ], 
+        [
+            "&lt;Seventoes", 
+            "never as root", 
+            "06:14:32.291"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "i mean the rm -rf", 
+            "06:14:41.482"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "what folder", 
+            "06:14:50.760"
+        ], 
+        [
+            "&lt;Seventoes", 
+            "if some files are owned by root you'll need to delete them as root", 
+            "06:14:51.708"
+        ], 
+        [
+            "&lt;ljharb", 
+            "in your node app", 
+            "06:14:56.326"
+        ], 
+        [
+            "&lt;ljharb", 
+            "but generally avoid sudo, and don't ever be root.", 
+            "06:15:26.375"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "so where does -g install the files to?", 
+            "06:15:43.378"
+        ], 
+        [
+            "&lt;ljharb", 
+            "to `npm root -g`", 
+            "06:18:04.261"
+        ], 
+        [
+            "&lt;ljharb", 
+            "Soopaman: but what are you installing globally?", 
+            "06:18:14.462"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "modules I am using between projects", 
+            "06:19:30.546"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "unless that's poor form, then I'll stick to the project local", 
+            "06:19:50.565"
+        ], 
+        [
+            "&lt;t0lkman", 
+            "What framework would you chose today for ios app's backend api handling ?", 
+            "06:27:29.294"
+        ], 
+        [
+            "&lt;compeman", 
+            "t0lkman: you mean like rest api?", 
+            "06:28:20.881"
+        ], 
+        [
+            "&lt;compeman", 
+            "or getting data from rest api?", 
+            "06:28:53.757"
+        ], 
+        [
+            "&lt;t0lkman", 
+            "yes", 
+            "06:29:01.470"
+        ], 
+        [
+            "&lt;t0lkman", 
+            "for restful api", 
+            "06:29:03.784"
+        ], 
+        [
+            "&lt;compeman", 
+            "i love sail", 
+            "06:29:15.595"
+        ], 
+        [
+            "&lt;compeman", 
+            "sails", 
+            "06:31:25.388"
+        ], 
+        [
+            "&lt;t0lkman", 
+            "but this is full stack framework.. like it has templating support, views etc", 
+            "06:32:17.751"
+        ], 
+        [
+            "&lt;t0lkman", 
+            "my ios app is objective c based and alll i need on the back end , it's restful api handling", 
+            "06:32:33.231"
+        ], 
+        [
+            "&lt;compeman", 
+            "t0lkman: you dont have to use templating and views", 
+            "06:33:49.705"
+        ], 
+        [
+            "&lt;compeman", 
+            "for example, i dont use", 
+            "06:34:30.152"
+        ], 
+        [
+            "&lt;ljharb", 
+            "t0lkman: if it's just an ios app why not use something like parse", 
+            "06:36:58.358"
+        ], 
+        [
+            "&lt;joepie91", 
+            "anybody have any clue what's going on here? <a href=\"https://gist.github.com/joepie91/47a44cfbd95438d1dfe9\" target=\"_blank\" rel=\"nofollow\">https://gist.github.com/joepie91/47a44cfbd95438d1dfe9</a>", 
+            "06:42:02.541"
+        ], 
+        [
+            "&lt;joepie91", 
+            "I'd expect passing parseInt into map to work...", 
+            "06:42:03.523"
+        ], 
+        [
+            "&lt;curiousx", 
+            "hello all, i would like to code web apps with node.js and javascript, can anyone point me on that please, i am really noob, but a know web design :p", 
+            "06:43:00.961"
+        ], 
+        [
+            "&lt;ljharb", 
+            "joepie91: nope. parseInt takes 2 arguments.", 
+            "06:43:06.067"
+        ], 
+        [
+            "&lt;ljharb", 
+            "joepie91: the 2nd is the radix. and map passes 3 arguments.", 
+            "06:43:16.764"
+        ], 
+        [
+            "&lt;joepie91", 
+            "ahhhh.", 
+            "06:43:18.345"
+        ], 
+        [
+            "&lt;ljharb", 
+            "joepie91: so parseIn(25, 1) is NaN", 
+            "06:43:29.074"
+        ], 
+        [
+            "&lt;ljharb", 
+            "joepie91: always pass an explicit radix into parseInt.", 
+            "06:43:29.758"
+        ], 
+        [
+            "&lt;joepie91", 
+            "yeah, that makes sense", 
+            "06:43:33.927"
+        ], 
+        [
+            "&lt;ljharb", 
+            "especially if your content starts with 0.", 
+            "06:43:37.398"
+        ], 
+        [
+            "&lt;ljharb", 
+            "because parseInt(&quot;017&quot;) will parse in octal in ES3.", 
+            "06:43:50.347"
+        ], 
+        [
+            "&lt;joepie91", 
+            "time for a wrapper function then :)", 
+            "06:43:56.983"
+        ], 
+        [
+            "&lt;ljharb", 
+            "so you basically always want parseInt(x, 10)", 
+            "06:44:01.646"
+        ], 
+        [
+            "&lt;ljharb", 
+            "yup", 
+            "06:44:09.126"
+        ], 
+        [
+            "&lt;ljharb", 
+            "altho in that case you could just use parseFloat.", 
+            "06:44:12.381"
+        ], 
+        [
+            "&lt;ljharb", 
+            "(also ick, cs)", 
+            "06:44:29.062"
+        ], 
+        [
+            "&lt;joepie91", 
+            ":)", 
+            "06:44:54.652"
+        ], 
+        [
+            "&lt;joepie91", 
+            "yep, works now with a wrapper function", 
+            "06:45:10.614"
+        ], 
+        [
+            "&lt;joepie91", 
+            "parseInt10 = (val) -&gt; parseInt(val, 10)", 
+            "06:45:20.390"
+        ], 
+        [
+            "&lt;joepie91", 
+            "thanks ljharb :P", 
+            "06:46:24.158"
+        ], 
+        [
+            "&lt;ljharb", 
+            "np", 
+            "06:46:30.044"
+        ], 
+        [
+            "&lt;joepie91", 
+            "also, epguides.com &lt;3", 
+            "06:47:31.094"
+        ], 
+        [
+            "&lt;joepie91", 
+            "air dates and episode titles in CSV :D", 
+            "06:47:32.944"
+        ], 
+        [
+            "&lt;procyborg", 
+            "i am trying to figure the hot path for a nodejs app (a simple RESTful express APP with a query from MONGO) - my current throughput is 56 requests / second - how can i imeasure the hot path ?", 
+            "06:50:45.392"
+        ], 
+        [
+            "&lt;qingyun", 
+            "hello", 
+            "07:21:56.055"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "ljharb: are you familiar with fulfilling a recursive promise?", 
+            "07:38:30.041"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "bmeck helped me last night with some code", 
+            "07:38:41.288"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "and I can't for the life of me figure out line 15", 
+            "07:38:48.914"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "<a href=\"https://gist.github.com/bmeck/20a85685ee2d852cc6ef\" target=\"_blank\" rel=\"nofollow\">https://gist.github.com/bmeck/20a85685ee2d852cc6ef</a>", 
+            "07:38:55.918"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "fulfill(aggregate);", 
+            "07:39:08.532"
+        ], 
+        [
+            "&lt;ljharb", 
+            "it's not defined anywhere in there", 
+            "07:39:15.452"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "when aggregate isn't defined, but I assume it has something to do with the promise", 
+            "07:39:16.025"
+        ], 
+        [
+            "&lt;ljharb", 
+            "so, no idea", 
+            "07:39:38.454"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "maybe like fulfil(ret), which was the initial promise?", 
+            "07:40:13.726"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "promises are the new regex for me\u2026", 
+            "07:40:17.207"
+        ], 
+        [
+            "&lt;ljharb", 
+            "promises are great and way simpler than regex. but a recursive promise sounds gnarly", 
+            "07:44:45.290"
+        ], 
+        [
+            "&lt;mothership", 
+            "sending a post request with json causes socket hangup when sending base64 encoded image as part of the json object, is there any additional options required for request for avoiding the hangup?", 
+            "07:46:36.206"
+        ], 
+        [
+            "&lt;stride", 
+            "mothership: from where and to what are you sending the data?", 
+            "07:48:59.625"
+        ], 
+        [
+            "&lt;mothership", 
+            "stride, im sending data from nodejs app using request module and sending to nodejs app which is using restify module, everything works fine when post'ing json unless I add that base64 encoded image, then i get a socket hangup, the recieving end doesnt even get the request.", 
+            "07:51:31.396"
+        ], 
+        [
+            "&lt;Impaloo", 
+            "How do I quickly check a file for 'use strict' errors _only_?", 
+            "07:52:41.389"
+        ], 
+        [
+            "&lt;Impaloo", 
+            "i tried { &quot;strict&quot;: true } in a temp jshintrc file that I use", 
+            "07:52:44.278"
+        ], 
+        [
+            "&lt;stride", 
+            "mothership: restify has some option named maxBodySize that you could raise iirc, though that should normally gracefully return a 41x header", 
+            "07:53:06.411"
+        ], 
+        [
+            "&lt;ljharb", 
+            "Impaloo: what do you mean &quot;use strict&quot; errors", 
+            "07:53:22.199"
+        ], 
+        [
+            "&lt;ljharb", 
+            "Impaloo: everything is only verifiable at runtime, generally", 
+            "07:53:37.372"
+        ], 
+        [
+            "&lt;Impaloo", 
+            "ljharb: correct scope in variable declarations and such", 
+            "07:54:07.306"
+        ], 
+        [
+            "&lt;Impaloo", 
+            "i've imported a huge library which I entirely block in my usual jshint checks, but I need to ensure it's strict compatible", 
+            "07:55:04.295"
+        ], 
+        [
+            "&lt;ljharb", 
+            "um", 
+            "07:55:13.822"
+        ], 
+        [
+            "&lt;ljharb", 
+            "you shouldn't be enabling strict mode globally", 
+            "07:55:16.414"
+        ], 
+        [
+            "&lt;ljharb", 
+            "enable it per-function", 
+            "07:55:30.807"
+        ], 
+        [
+            "&lt;ljharb", 
+            "and a linter can't really check those things - you just have to see how &quot;this&quot; is used and how the function is called, and things like that.", 
+            "07:55:53.532"
+        ], 
+        [
+            "&lt;mothership", 
+            "stride, sorry its the latest express with bodyparser not restify", 
+            "07:56:01.889"
+        ], 
+        [
+            "&lt;Impaloo", 
+            "ljharb: I've generated an application that bundles all scripts and applies strict mode", 
+            "07:56:27.331"
+        ], 
+        [
+            "&lt;Impaloo", 
+            "with yeoman*", 
+            "07:56:40.514"
+        ], 
+        [
+            "&lt;Impaloo", 
+            "I want to avoid having to refactor the build process", 
+            "07:56:47.294"
+        ], 
+        [
+            "&lt;stride", 
+            "mothership: the json parser in bodyparser has a similar option named limit", 
+            "07:56:51.892"
+        ], 
+        [
+            "&lt;ljharb", 
+            "Impaloo: that's a really dangerous build process, and literally every single guide on strict mode says not to do that.", 
+            "07:57:25.772"
+        ], 
+        [
+            "&lt;ljharb", 
+            "Impaloo: you're going to either have to fix your build process, or, manually check every part of that huge library.", 
+            "07:57:27.294"
+        ], 
+        [
+            "&lt;stride", 
+            "mothership: although I think that handles large requests gracefully as well. have you tried dumping the request (with tcpdump/wireshark/...) to see when it terminates the connection?", 
+            "07:58:13.267"
+        ], 
+        [
+            "&lt;Impaloo", 
+            "ljharb: ok. so strict mode should only be explicitly used in closures where it's needed?", 
+            "07:58:30.226"
+        ], 
+        [
+            "&lt;Impaloo", 
+            "and not 'use strict';&lt;minified_bundled_code&gt;?", 
+            "07:58:57.303"
+        ], 
+        [
+            "&lt;ljharb", 
+            "absolutely correct.", 
+            "07:59:24.101"
+        ], 
+        [
+            "&lt;ljharb", 
+            "only ever inside functions, never ever globally.", 
+            "07:59:31.523"
+        ], 
+        [
+            "&lt;ljharb", 
+            "and you should put it in every single function eventually - but still never globally.", 
+            "07:59:37.998"
+        ], 
+        [
+            "&lt;dannoete_", 
+            "hi all", 
+            "07:59:51.407"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "ljharb: do you have a link on why you never 'use strict' globally?", 
+            "08:01:34.575"
+        ], 
+        [
+            "&lt;mothership", 
+            "stride, well the limit fixed it", 
+            "08:01:37.434"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "'cause right now, I'm guilty of that", 
+            "08:01:39.095"
+        ], 
+        [
+            "&lt;mothership", 
+            "stride, thanks", 
+            "08:01:49.251"
+        ], 
+        [
+            "&lt;Impaloo", 
+            "ljharb: every generator I've used has this kind of build process :S", 
+            "08:02:06.473"
+        ], 
+        [
+            "&lt;ljharb", 
+            "Soopaman: i'm sure i can find many, but the primary reason is that you can't ever turn it *off* once it's on globally, and code that isn't explicitly written with strict mode in mind might break horribly in strict mode.", 
+            "08:02:13.282"
+        ], 
+        [
+            "&lt;ljharb", 
+            "Impaloo: what do you mean by &quot;generator&quot;?", 
+            "08:02:28.132"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "but isn't it better to force most code to be written strictly? (unless you are importing random libraries)", 
+            "08:02:58.245"
+        ], 
+        [
+            "&lt;ljharb", 
+            "it's never better to force semantics on someone they might not expect.", 
+            "08:03:30.189"
+        ], 
+        [
+            "&lt;ljharb", 
+            "what if they're testing in a browser that doesn't support strict mode?", 
+            "08:03:36.471"
+        ], 
+        [
+            "&lt;ljharb", 
+            "also, some browsers do different things in strict mode.", 
+            "08:03:39.291"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "but if starting a codebase from scratch it would be ok", 
+            "08:03:48.893"
+        ], 
+        [
+            "&lt;ljharb", 
+            "i just found a bug about that today actually <a href=\"https://twitter.com/ljharb/status/586311301753765888\" target=\"_blank\" rel=\"nofollow\">https://twitter.com/ljharb/status/586311301753765888</a>", 
+            "08:03:49.120"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "hmm, gotha", 
+            "08:04:06.789"
+        ], 
+        [
+            "&lt;ljharb", 
+            "it's ok to do it per-function. i don't think it'll ever be ok to do it globally.", 
+            "08:04:17.270"
+        ], 
+        [
+            "&lt;ljharb", 
+            "ES6 &quot;class&quot; code, and ES6 module code, will be automatically in strict mode tho, so that's good.", 
+            "08:05:28.353"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "k", 
+            "08:07:16.878"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "ljharb: fascinating", 
+            "08:08:59.638"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "although, were you just looking for trouble with that code?", 
+            "08:09:43.880"
+        ], 
+        [
+            "&lt;image", 
+            "hello", 
+            "08:11:26.434"
+        ], 
+        [
+            "&lt;stride", 
+            "mothership: you're welcome. sounds weird though. one of the sides seems to have incorrect error handling there", 
+            "08:14:09.212"
+        ], 
+        [
+            "&lt;Impaloo", 
+            "ljharb: sorry, DC'd. by generators I mean yeoman generators. also, the global 'use strict'; directive is only used for minified application files that each has a global 'use strict'; directive", 
+            "08:16:21.474"
+        ], 
+        [
+            "&lt;ljharb", 
+            "Impaloo: i wouldn't expect yeoman to follow best practices \u00af\\_(\u30c4)_/\u00af", 
+            "08:18:42.329"
+        ], 
+        [
+            "&lt;Impaloo", 
+            "ljharb: yeoman generators** :)", 
+            "08:18:46.835"
+        ], 
+        [
+            "&lt;Impaloo", 
+            "but yeah I agree", 
+            "08:18:49.501"
+        ], 
+        [
+            "&lt;ljharb", 
+            "Soopaman: i was actually hoping to have it throw for both examples.", 
+            "08:19:00.357"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "gotcha", 
+            "08:19:08.893"
+        ], 
+        [
+            "&lt;Impaloo", 
+            "ljharb: but, what's wrong with a global 'use strict'; directive, if each pre-minified code has a 'use strict'; on line 1 in their respective files?", 
+            "08:19:32.339"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "and it simple swallows the error on the string literal ?", 
+            "08:19:56.483"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "kinda curious if it is doing the typical &quot;if doesn't exist skip&quot; object behavior", 
+            "08:20:20.532"
+        ], 
+        [
+            "&lt;ljharb", 
+            "Impaloo: if every single one does? nothing i suppose. but you just ran into a problem with it.", 
+            "08:20:27.797"
+        ], 
+        [
+            "&lt;ljharb", 
+            "Soopaman: yes, it swallows it.", 
+            "08:20:32.137"
+        ], 
+        [
+            "&lt;ljharb", 
+            "it's a safari bug where they're treating number and string properties differently.", 
+            "08:21:15.532"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "i thought that was in all browsers", 
+            "08:23:02.569"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "since firefox 3 introduced it as acceptable behavior", 
+            "08:23:14.223"
+        ], 
+        [
+            "&lt;ljharb", 
+            "wait what?", 
+            "08:23:21.775"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "(back when the ie's threw errors on unknown properties)", 
+            "08:23:26.743"
+        ], 
+        [
+            "&lt;ljharb", 
+            "i'm not sure what you mean", 
+            "08:23:34.157"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "back when, almost all property checks would throw errors", 
+            "08:23:44.457"
+        ], 
+        [
+            "&lt;ljharb", 
+            "JS has never behaved differently between dot and bracket and string and integer access", 
+            "08:23:45.395"
+        ], 
+        [
+            "&lt;ljharb", 
+            "hm", 
+            "08:24:02.914"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "but then I think it was ff 3.5, that started swallowing improper properties reference", 
+            "08:24:16.236"
+        ], 
+        [
+            "&lt;ljharb", 
+            "i'm reasonably confident that __proto__ in ES6 is the first time that the spec has ever allowed dot and bracket access to differ", 
+            "08:24:26.725"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "in lieu of the extra (&quot;blah&quot; in obj) test", 
+            "08:24:34.844"
+        ], 
+        [
+            "&lt;ljharb", 
+            "and nothing in the spec has ever allowed [0] to do something different than ['0']", 
+            "08:24:44.257"
+        ], 
+        [
+            "&lt;ljharb", 
+            "obv browsers could have still done it :-)", 
+            "08:25:05.557"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "don't know about the spec, just remember having that issue before with various browsers", 
+            "08:25:06.749"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "heh", 
+            "08:25:19.798"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "the joys of web dev", 
+            "08:25:31.065"
+        ], 
+        [
+            "&lt;Soopaman", 
+            "nonethless 4:30am says goodnight!", 
+            "08:28:23.965"
+        ], 
+        [
+            "&lt;pmtrung", 
+            "Hi", 
+            "08:41:57.543"
+        ], 
+        [
+            "&lt;pmtrung", 
+            "hi", 
+            "08:42:13.320"
+        ], 
+        [
+            "&lt;pmtrung", 
+            "ALALAL", 
+            "08:42:15.032"
+        ], 
+        [
+            "&lt;pmtrung", 
+            "ALALLA", 
+            "08:42:16.412"
+        ], 
+        [
+            "&lt;pmtrung", 
+            "ALALALA", 
+            "08:42:17.645"
+        ], 
+        [
+            "&lt;pmtrung", 
+            "Sams Teach Yourself Node.js in 24 Hours", 
+            "08:42:23.496"
+        ], 
+        [
+            "&lt;pmtrung", 
+            "Download?", 
+            "08:42:31.567"
+        ], 
+        [
+            "&lt;larsi", 
+            "wtf", 
+            "08:43:01.211"
+        ], 
+        [
+            "&lt;p15", 
+            "alala to you", 
+            "08:48:04.160"
+        ], 
+        [
+            "&lt;stride", 
+            "must've skipped to the &quot;run around in a circle and scream&quot; chapter", 
+            "08:48:33.353"
+        ], 
+        [
+            "&lt;p15", 
+            "sounds like my experience with PHP", 
+            "08:51:18.966"
+        ], 
+        [
+            "&lt;joepie91", 
+            "my experience with PHP has mostly been filling my brain with all kinds of weird edgecases and caveats to take into account", 
+            "08:51:57.503"
+        ], 
+        [
+            "&lt;joepie91", 
+            "not sure which is worse", 
+            "08:52:03.429"
+        ], 
+        [
+            "&lt;joepie91", 
+            ":)", 
+            "08:52:07.658"
+        ], 
+        [
+            "&lt;nocigar", 
+            "where, on the request object, do i find the payload of a delete request?", 
+            "08:55:25.760"
+        ], 
+        [
+            "&lt;ljharb", 
+            "delete requests typically don't have payloads, do they?", 
+            "08:55:38.969"
+        ], 
+        [
+            "&lt;ljharb", 
+            "<a href=\"http://stackoverflow.com/questions/299628/is-an-entity-body-allowed-for-an-http-delete-request\" target=\"_blank\" rel=\"nofollow\">http://stackoverflow.com/questions/299628/is-an-entity-body-allowed-for-an-http-delete-request</a>", 
+            "08:55:39.639"
+        ], 
+        [
+            "&lt;p15", 
+            "the verb doesn't change that much", 
+            "08:55:54.046"
+        ], 
+        [
+            "&lt;ljharb", 
+            "looks like some things ignore the body on a DELETE, some things don't", 
+            "08:55:58.403"
+        ], 
+        [
+            "&lt;ljharb", 
+            "p15: yes, it can :-)", 
+            "08:57:11.288"
+        ], 
+        [
+            "&lt;p15", 
+            "probably a good idea to put it in the URL params", 
+            "08:57:29.358"
+        ], 
+        [
+            "&lt;nocigar", 
+            "ljharb, ok i guess node and express ignores it then, because request.body is empty", 
+            "08:57:29.582"
+        ], 
+        [
+            "&lt;ljharb", 
+            "seems likely", 
+            "08:57:43.833"
+        ], 
+        [
+            "&lt;p15", 
+            "req.params.entity_id that kind of thing", 
+            "08:57:52.473"
+        ], 
+        [
+            "&lt;ljharb", 
+            "i'd expect it to be in the URL", 
+            "08:57:54.902"
+        ], 
+        [
+            "&lt;ljharb", 
+            "all restful-like", 
+            "08:58:13.815"
+        ], 
+        [
+            "&lt;p15", 
+            "if you are just messing with the entity maybe should use POST", 
+            "08:58:14.606"
+        ], 
+        [
+            "&lt;p15", 
+            "browsers can mess with requests too", 
+            "08:58:50.831"
+        ], 
+        [
+            "&lt;nocigar", 
+            "p15, yes maybe post is a better method in this case..", 
+            "08:59:12.044"
+        ], 
+        [
+            "&lt;nocigar", 
+            "it is an endpoint for deleting user accounts and I want an extra level of verification where the user needs to provide a password or facebook token in the request", 
+            "09:01:14.561"
+        ], 
+        [
+            "&lt;ljharb", 
+            "why?", 
+            "09:01:29.463"
+        ], 
+        [
+            "&lt;p15", 
+            "what about HTTP basic auth or OAuth", 
+            "09:01:33.080"
+        ], 
+        [
+            "&lt;ljharb", 
+            "they're already logged in in the session, aren't they?", 
+            "09:02:19.673"
+        ], 
+        [
+            "&lt;stride", 
+            "it's not that uncommon to ask the user to verify such actions nevertheless", 
+            "09:02:28.583"
+        ], 
+        [
+            "&lt;nocigar", 
+            "ljharb, yes they are but they might be on a public computer and forgot to log out.. i dont'know, i see that kind of functionality quite often and thought it was a good idea", 
+            "09:03:17.854"
+        ], 
+        [
+            "&lt;ljharb", 
+            "nocigar: if that's the case they're screwed anyways", 
+            "09:03:22.112"
+        ], 
+        [
+            "&lt;ljharb", 
+            "they could change their password.", 
+            "09:03:32.546"
+        ], 
+        [
+            "&lt;ljharb", 
+            "i'm not saying don't ask the user", 
+            "09:03:37.079"
+        ], 
+        [
+            "&lt;ljharb", 
+            "i'm saying don't put that in the DELETE api.", 
+            "09:03:48.521"
+        ], 
+        [
+            "&lt;ljharb", 
+            "by the time it gets to that point, the user is pretty damn sure what they want to do", 
+            "09:04:42.248"
+        ], 
+        [
+            "&lt;geirha", 
+            "Maybe we should request that next HTTP version include an UNDELETE method. Just to be safe.", 
+            "09:06:23.263"
+        ], 
+        [
+            "&lt;stride", 
+            "ljharb: that doesn't really apply in the public computer scenario though. if there's an endpoint that can just be triggered by whoever, the password verification would be rendered meaningless", 
+            "09:08:43.263"
+        ], 
+        [
+            "&lt;ljharb", 
+            "stride: right but in that scenario all is lost anyways.", 
+            "09:08:56.802"
+        ], 
+        [
+            "&lt;ljharb", 
+            "the way linkedin does it, is that they have 2 session states", 
+            "09:09:20.470"
+        ], 
+        [
+            "&lt;ljharb", 
+            "&quot;logged in&quot; and &quot;entered their password in the last 5 minutes&quot;", 
+            "09:09:27.839"
+        ], 
+        [
+            "&lt;ljharb", 
+            "and all the sensitive stuff can only happen in the latter state.", 
+            "09:09:36.131"
+        ], 
+        [
+            "&lt;ljharb", 
+            "you can do that and leave DELETE requiring only that session flag.", 
+            "09:09:41.305"
+        ], 
+        [
+            "&lt;ljharb", 
+            "also &quot;change password&quot; obvi", 
+            "09:10:17.554"
+        ], 
+        [
+            "&lt;stride", 
+            "kind of the same thing.. but yeh", 
+            "09:10:32.932"
+        ], 
+        [
+            "&lt;joepie91", 
+            "geirha: that is actually not an entirely insane idea, heh", 
+            "09:10:34.286"
+        ], 
+        [
+            "&lt;StrangeBrew", 
+            "hi I've got a rookie question.. what is the recommended way to send/sync the code on my pc to a vps? plain ftp? rsync? something else?", 
+            "09:10:43.951"
+        ], 
+        [
+            "&lt;joepie91", 
+            "StrangeBrew: do you use git already?", 
+            "09:10:47.667"
+        ], 
+        [
+            "&lt;StrangeBrew", 
+            "yeah", 
+            "09:10:57.316"
+        ], 
+        [
+            "&lt;joepie91", 
+            "then the easiest way tends to be to just clone the repo on your VPS", 
+            "09:11:00.215"
+        ], 
+        [
+            "&lt;joepie91", 
+            "and pull the updates", 
+            "09:11:14.575"
+        ], 
+        [
+            "&lt;StrangeBrew", 
+            "oh good one", 
+            "09:11:20.872"
+        ], 
+        [
+            "&lt;StrangeBrew", 
+            "thanks!", 
+            "09:11:27.849"
+        ], 
+        [
+            "&lt;joepie91", 
+            "yw :)", 
+            "09:11:32.123"
+        ], 
+        [
+            "&lt;joepie91", 
+            "(if you ever find yourself without git, rsync is a good second, you can tunnel it over SSH too - avoid FTP)", 
+            "09:12:03.171"
+        ], 
+        [
+            "&lt;ljharb", 
+            "joepie91: sure it is.", 
+            "09:12:32.093"
+        ], 
+        [
+            "&lt;ljharb", 
+            "geirha: &quot;DELETE&quot; means &quot;gone forever&quot;. &quot;UNDELETE&quot; would mean &quot;DELETE&quot; didn't do its job.", 
+            "09:12:32.658"
+        ], 
+        [
+            "&lt;nocigar", 
+            "ljharb, yes i though of that, but then i thought the idea of sending verification data in the request body would be simpler.", 
+            "09:12:38.548"
+        ], 
+        [
+            "&lt;StrangeBrew", 
+            "awesome:)", 
+            "09:12:54.717"
+        ], 
+        [
+            "&lt;joepie91", 
+            "ljharb: the concept of an undo call is good in and of itself - hence &quot;not entirely&quot;", 
+            "09:13:04.724"
+        ], 
+        [
+            "&lt;nocigar", 
+            "it is probably a better idea though.", 
+            "09:13:13.613"
+        ], 
+        [
+            "&lt;geirha", 
+            "It *was* meant a joke :)", 
+            "09:13:22.213"
+        ], 
+        [
+            "&lt;joepie91", 
+            "ljharb: ref <a href=\"http://alistapart.com/article/neveruseawarning\" target=\"_blank\" rel=\"nofollow\">http://alistapart.com/article/neveruseawarning</a> :)", 
+            "09:13:32.361"
+        ], 
+        [
+            "&lt;stride", 
+            "joepie91: then you're essentially just setting a flag, which wouldn't really delete the resource", 
+            "09:13:44.509"
+        ], 
+        [
+            "&lt;joepie91", 
+            "stride: yes, that is the idea, the above link explains the concept behind it", 
+            "09:13:50.868"
+        ], 
+        [
+            "&lt;joepie91", 
+            "(although focused towards UI, not so much towards APIs)", 
+            "09:13:56.269"
+        ], 
+        [
+            "&lt;joepie91", 
+            "(but the principle remans the same)", 
+            "09:14:16.405"
+        ], 
+        [
+            "&lt;joepie91", 
+            "the idea of undo instead of confirmation, like the idea of automatically created unassociated accounts, is a great idea that's not implemented very much...", 
+            "09:15:04.108"
+        ], 
+        [
+            "&lt;joepie91", 
+            "unfortunately", 
+            "09:15:06.468"
+        ], 
+        [
+            "&lt;joepie91", 
+            "(the account creation idea being &quot;create an 'account' the moment somebody loads your application, so they can start using it immediately, and let them 'register' to associate that account with a username/password - an example implementation of this is at <a href=\"http://todo.cryto.net/list\" target=\"_blank\" rel=\"nofollow\">http://todo.cryto.net/list</a> )", 
+            "09:16:18.753"
+        ], 
+        [
+            "&lt;ljharb", 
+            "joepie91: true", 
+            "09:16:51.131"
+        ], 
+        [
+            "&lt;joepie91", 
+            "anyway, with the idea of HTTP verbs representing common user actions, it would be a fairly reasonable idea to implement a delete/undo workflow as HTTP verbs - although using it under the current DELETE verb would probably be a bad idea", 
+            "09:17:21.420"
+        ], 
+        [
+            "&lt;joepie91", 
+            "as it would not be clear whether a DELETE is permanent or not, without further context", 
+            "09:17:29.462"
+        ], 
+        [
+            "&lt;joepie91", 
+            "not that I have any clue how to implement revertible DELETE as a verb, though :)", 
+            "09:17:56.168"
+        ], 
+        [
+            "&lt;joepie91", 
+            "(cc geirha )", 
+            "09:18:51.154"
+        ], 
+        [
+            "&lt;stride", 
+            "we have other http verbs, i don't really see how making a delete action reversible would be more benefitial than say a put/patch/whatever that explicitly offers deletion flags or something", 
+            "09:19:06.512"
+        ], 
+        [
+            "&lt;sadtaco", 
+            "<a href=\"http://jsfiddle.net/daw0fc33/\" target=\"_blank\" rel=\"nofollow\">http://jsfiddle.net/daw0fc33/</a> How can I deep merge these two objects? I thought lodash's extend/asign would, but npoe.", 
+            "09:19:18.270"
+        ], 
+        [
+            "&lt;joepie91", 
+            "stride: for the same reason DELETE /user/1 makes more sense than POST /user/1?action=delete", 
+            "09:19:41.699"
+        ], 
+        [
+            "&lt;SweetCute", 
+            "can node.js handle the client side part too? the html parts? or is it just a serverside thing?", 
+            "09:20:18.329"
+        ], 
+        [
+            "&lt;joepie91", 
+            "sadtaco: _.merge does that, I think?", 
+            "09:20:36.597"
+        ], 
+        [
+            "&lt;sadtaco", 
+            "Oh I think _.merge does it", 
+            "09:20:38.997"
+        ], 
+        [
+            "&lt;sadtaco", 
+            "haha", 
+            "09:20:41.902"
+        ], 
+        [
+            "&lt;joepie91", 
+            "heh", 
+            "09:20:48.858"
+        ], 
+        [
+            "&lt;ljharb", 
+            "joepie91: <a href=\"https://annevankesteren.nl/2007/10/http-methods\" target=\"_blank\" rel=\"nofollow\">https://annevankesteren.nl/2007/10/http-methods</a> suggests a bunch of other ones", 
+            "09:21:05.546"
+        ], 
+        [
+            "&lt;ljharb", 
+            "LOCK/UNLOCK is nice", 
+            "09:21:08.056"
+        ], 
+        [
+            "&lt;SweetCute", 
+            "can node.js handle the client side part too? the html parts? or is it just a serverside thing?", 
+            "09:21:18.635"
+        ], 
+        [
+            "&lt;ljharb", 
+            "also there's some version control ones in there", 
+            "09:21:19.078"
+        ], 
+        [
+            "&lt;SweetCute", 
+            "hello?", 
+            "09:21:32.963"
+        ], 
+        [
+            "&lt;ljharb", 
+            "SweetCute: only a browser can handle that. and every server thing can spit out html and js for the browser.", 
+            "09:21:47.879"
+        ], 
+        [
+            "&lt;joepie91", 
+            "ljharb: that's more methods than I thought existed :) does the Node.js http module generally support any method, or just the 'standard' ones?", 
+            "09:21:52.928"
+        ], 
+        [
+            "&lt;joepie91", 
+            "for incoming reqs", 
+            "09:21:55.668"
+        ], 
+        [
+            "&lt;SweetCute", 
+            "I meant programming the client side ljharb", 
+            "09:22:08.061"
+        ], 
+        [
+            "&lt;joepie91", 
+            "SweetCute: you may be looking for webpack/browserify", 
+            "09:22:10.568"
+        ], 
+        [
+            "&lt;ljharb", 
+            "joepie91: no idea", 
+            "09:22:14.247"
+        ], 
+        [
+            "&lt;SweetCute", 
+            "no no", 
+            "09:22:20.316"
+        ], 
+        [
+            "&lt;SweetCute", 
+            "i'm not looking for anything", 
+            "09:22:25.386"
+        ], 
+        [
+            "&lt;ljharb", 
+            "SweetCute: i'm not sure what you're asking", 
+            "09:22:31.553"
+        ], 
+        [
+            "&lt;SweetCute", 
+            "yeah sorry about that", 
+            "09:22:35.711"
+        ], 
+        [
+            "&lt;joepie91", 
+            "ljharb: should have a test with that... seems interesting - what's the mechanics behind LOCK/UNLOCK (supposed to be)?", 
+            "09:22:37.107"
+        ], 
+        [
+            "&lt;joepie91", 
+            "also, no undo it seems", 
+            "09:22:45.802"
+        ], 
+        [
+            "&lt;joepie91", 
+            ":/", 
+            "09:22:47.393"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "SweetCute: use just javascript? node.js is the server side environment to develop applications in javascript, on client side your environment has the name browser to develop with javascript, no need of node.js", 
+            "09:22:50.881"
+        ], 
+        [
+            "&lt;sadtaco", 
+            "<a href=\"http://jsfiddle.net/daw0fc33/1/\" target=\"_blank\" rel=\"nofollow\">http://jsfiddle.net/daw0fc33/1/</a> I can supply &quot;this&quot; too. Well that's handy.", 
+            "09:23:02.862"
+        ], 
+        [
+            "&lt;joepie91", 
+            "but what would one call a non-permanent DELETE?", 
+            "09:23:03.941"
+        ], 
+        [
+            "&lt;SweetCute", 
+            "I'm asking, is there a way to code the html client side with node.js?", 
+            "09:23:27.768"
+        ], 
+        [
+            "&lt;joepie91", 
+            "sadtaco: careful, I think _.merge might clone", 
+            "09:23:35.028"
+        ], 
+        [
+            "&lt;joepie91", 
+            "so merging `this` may not work as you expect", 
+            "09:23:56.334"
+        ], 
+        [
+            "&lt;sadtaco", 
+            "You mean clone and return something else? Nope it applies to, as you can see there", 
+            "09:23:58.456"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "SweetCute: my answer answers your question? you can do something like node.js app which renders html, so server side rendering. but not in the browser", 
+            "09:24:18.665"
+        ], 
+        [
+            "&lt;SweetCute", 
+            "ok so on browser side. who handles that part?", 
+            "09:24:26.681"
+        ], 
+        [
+            "&lt;SweetCute", 
+            "what language?", 
+            "09:24:40.380"
+        ], 
+        [
+            "&lt;joepie91", 
+            "SweetCute: javascript", 
+            "09:24:51.625"
+        ], 
+        [
+            "&lt;joepie91", 
+            "sadtaco: doesn't it apply to the first arg?", 
+            "09:24:56.749"
+        ], 
+        [
+            "&lt;sadtaco", 
+            "<a href=\"http://jsfiddle.net/daw0fc33/2/\" target=\"_blank\" rel=\"nofollow\">http://jsfiddle.net/daw0fc33/2/</a> seems it needs to be the first arg, yeah", 
+            "09:24:57.390"
+        ], 
+        [
+            "&lt;stride", 
+            "joepie91: how does delete make more sense than a post (with a new state, not an action) if the resource is still accessible afterwards?", 
+            "09:24:58.136"
+        ], 
+        [
+            "&lt;joepie91", 
+            "stride: it isn't accessible, it's recoverable", 
+            "09:25:12.555"
+        ], 
+        [
+            "&lt;ljharb", 
+            "SweetCute: always javascript.", 
+            "09:25:37.664"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "SweetCute: its the same language, javascript, just in another environment: browser", 
+            "09:25:41.707"
+        ], 
+        [
+            "&lt;ljharb", 
+            "SweetCute: you can write other things and transpile it to javascript. but always javascript.", 
+            "09:25:48.690"
+        ], 
+        [
+            "&lt;sadtaco", 
+            "<a href=\"http://jsfiddle.net/daw0fc33/3/\" target=\"_blank\" rel=\"nofollow\">http://jsfiddle.net/daw0fc33/3/</a> Oh, but this isn't what I wanted. events.two should be ['woo','wee']", 
+            "09:25:53.850"
+        ], 
+        [
+            "&lt;joepie91", 
+            "stride: that's the thing - the *intention* of the action is different from a regular 'update the properties for this thing'", 
+            "09:26:05.469"
+        ], 
+        [
+            "&lt;joepie91", 
+            "it being a 'deleted' flag is an implementation detail", 
+            "09:26:15.493"
+        ], 
+        [
+            "&lt;joepie91", 
+            "conceptually, you intend to do a recoverable delete", 
+            "09:26:22.213"
+        ], 
+        [
+            "&lt;joepie91", 
+            "and having to POST a changed deleted flag would just be a leaky abstraction", 
+            "09:26:40.665"
+        ], 
+        [
+            "&lt;joepie91", 
+            "sorry, PUT", 
+            "09:26:53.851"
+        ], 
+        [
+            "&lt;joepie91", 
+            "(or PROPPATCH, or whatever you use for property changes)", 
+            "09:26:58.210"
+        ], 
+        [
+            "&lt;sadtaco", 
+            "How can I deeply merge objects like that? I kinda have no other option.", 
+            "09:27:11.960"
+        ], 
+        [
+            "&lt;joepie91", 
+            "sadtaco: there's a deep-merge module on npm", 
+            "09:27:16.803"
+        ], 
+        [
+            "&lt;joepie91", 
+            "somewhere", 
+            "09:27:18.196"
+        ], 
+        [
+            "&lt;stride", 
+            "joepie91: who is you? we're still talking about APIs", 
+            "09:27:33.816"
+        ], 
+        [
+            "&lt;sadtaco", 
+            "I think I saw that and was hoping I wouldn't need since I have lodash. Heh", 
+            "09:27:33.998"
+        ], 
+        [
+            "&lt;joepie91", 
+            "stride: ?", 
+            "09:28:17.141"
+        ], 
+        [
+            "&lt;joepie91", 
+            "sadtaco: don't just rely on lodash :)", 
+            "09:28:43.127"
+        ], 
+        [
+            "&lt;sadtaco", 
+            "Well and bluebird, and a few other things.", 
+            "09:29:12.918"
+        ], 
+        [
+            "&lt;sadtaco", 
+            "I'd actually prefer to return the merged copy. Cause uh...", 
+            "09:30:39.659"
+        ], 
+        [
+            "&lt;sadtaco", 
+            "I need to merge in the order where the first object isn't the one I want to modify", 
+            "09:30:40.350"
+        ], 
+        [
+            "&lt;sadtaco", 
+            "Which deep-merge and deep-extend on npm don't do it seesm", 
+            "09:30:59.633"
+        ], 
+        [
+            "&lt;stride", 
+            "joepie91: lacking appropriate verbs for mark-for-deletion/suspend/archive and the appropriate reverse operation for that, you're just inventing new meaning for delete there. so without reading documentation that API wouldn't be more useful than putting a flag on the ressource or something", 
+            "09:31:25.198"
+        ], 
+        [
+            "&lt;sadtaco", 
+            "<a href=\"https://github.com/unclechu/node-deep-extend\" target=\"_blank\" rel=\"nofollow\">https://github.com/unclechu/node-deep-extend</a>", 
+            "09:31:33.891"
+        ], 
+        [
+            "&lt;sadtaco", 
+            "I could clone first I guess.", 
+            "09:31:34.732"
+        ], 
+        [
+            "&lt;ljharb", 
+            "sadtaco: npmjs.com/extend", 
+            "09:31:40.769"
+        ], 
+        [
+            "&lt;ljharb", 
+            "sadtaco: what is it you need?", 
+            "09:31:44.212"
+        ], 
+        [
+            "&lt;ljharb", 
+            "i maintain like 3 modules that do object extension/assignment", 
+            "09:32:07.402"
+        ], 
+        [
+            "&lt;ljharb", 
+            "sadtaco: extend(true, target, source) should do it", 
+            "09:32:08.143"
+        ], 
+        [
+            "&lt;joepie91", 
+            "ljharb: non-mutating deep merge", 
+            "09:32:18.776"
+        ], 
+        [
+            "&lt;ljharb", 
+            "extend(true, {}, source, source2)", 
+            "09:32:21.453"
+        ], 
+        [
+            "&lt;ljharb", 
+            "something like that.", 
+            "09:32:25.232"
+        ], 
+        [
+            "&lt;joepie91", 
+            "that's not a deep merge, is it?", 
+            "09:32:28.100"
+        ], 
+        [
+            "&lt;ljharb", 
+            "the &quot;true&quot; does it deeply.", 
+            "09:32:33.475"
+        ], 
+        [
+            "&lt;joepie91", 
+            "oh.", 
+            "09:32:35.520"
+        ], 
+        [
+            "&lt;joepie91", 
+            "ok :P", 
+            "09:32:41.329"
+        ], 
+        [
+            "&lt;sadtaco", 
+            "Would help to have an example on there.", 
+            "09:32:52.494"
+        ], 
+        [
+            "&lt;ljharb", 
+            "readme PRs accepted", 
+            "09:32:58.145"
+        ], 
+        [
+            "&lt;joepie91", 
+            "stride: I'm not arguing for it being a feature of a single API, I'm arguing for it being an (informal) standard", 
+            "09:33:05.532"
+        ], 
+        [
+            "&lt;ljharb", 
+            "but the other reality is, needing to deep merge an object should be a huge code smell", 
+            "09:33:06.337"
+        ], 
+        [
+            "&lt;sadtaco", 
+            "<a href=\"https://github.com/unclechu/node-deep-extend\" target=\"_blank\" rel=\"nofollow\">https://github.com/unclechu/node-deep-extend</a> this is what I'm looking for. I guess I should just clone first", 
+            "09:33:19.866"
+        ], 
+        [
+            "&lt;ljharb", 
+            "sadtaco: it's on npme. don't consume it from github", 
+            "09:33:23.318"
+        ], 
+        [
+            "&lt;SweetCute", 
+            "ljharb: so you're saying I use regular javascript to produce the client side web page. And the node.js part to handle the server side matters?", 
+            "09:33:24.746"
+        ], 
+        [
+            "&lt;sadtaco", 
+            "Yeah generally but I think I have a good reason here.", 
+            "09:33:30.008"
+        ], 
+        [
+            "&lt;ljharb", 
+            "sadtaco: <a href=\"http://npmjs.com/deep-extend\" target=\"_blank\" rel=\"nofollow\">http://npmjs.com/deep-extend</a>", 
+            "09:33:47.497"
+        ], 
+        [
+            "&lt;ljharb", 
+            "lol everyone always thinks they're a special snowflake, and their code smell isn't horrible :-p", 
+            "09:33:53.101"
+        ], 
+        [
+            "&lt;ljharb", 
+            "SweetCute: yes", 
+            "09:34:10.674"
+        ], 
+        [
+            "&lt;SweetCute", 
+            "thank you ljharb", 
+            "09:34:19.464"
+        ], 
+        [
+            "&lt;sadtaco", 
+            "... really.", 
+            "09:34:54.370"
+        ], 
+        [
+            "&lt;SweetCute", 
+            "Man I'm too drunk for this shit", 
+            "09:35:11.880"
+        ], 
+        [
+            "&lt;stride", 
+            "joepie91: oh yeah, agreed. though that'll be relatively difficult I guess. while deletion might be pretty clear on a resource, undo (or even undelete) has so many implications and possible side-effects (depending on the type of resource obviously) that it'll be pretty hard to standardize", 
+            "09:36:46.341"
+        ], 
+        [
+            "&lt;sadtaco", 
+            "I'm merging defaults. Which is a fairly common thing, yeah.", 
+            "09:37:18.759"
+        ], 
+        [
+            "&lt;ljharb", 
+            "deep defaults? Oo", 
+            "09:41:27.397"
+        ], 
+        [
+            "&lt;nocigar", 
+            "Inspired by the undo discussion: When a user deletes an account, tag it as removed and schedule the actual removal a couple of days from now. Tell the user in a confirmation email that the account is recoverable within that time span.", 
+            "09:44:38.879"
+        ], 
+        [
+            "&lt;ljharb", 
+            "if it's X days from now, tell them X - 2 days tho.", 
+            "09:45:39.533"
+        ], 
+        [
+            "&lt;nocigar", 
+            "hehe, yes you're right :)", 
+            "09:45:50.363"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "or confirmation mail with a link for the real delete", 
+            "09:45:54.424"
+        ], 
+        [
+            "&lt;nocigar", 
+            "or both", 
+            "09:46:35.905"
+        ], 
+        [
+            "&lt;stride", 
+            "ljharb: 2? can we swap customers? :)", 
+            "09:46:46.853"
+        ], 
+        [
+            "&lt;ljharb", 
+            "haha", 
+            "09:46:56.840"
+        ], 
+        [
+            "&lt;ljharb", 
+            "they're deleting their account, who cares :-p", 
+            "09:47:05.880"
+        ], 
+        [
+            "&lt;stride", 
+            "heh, true", 
+            "09:47:27.062"
+        ], 
+        [
+            "&lt;nocigar", 
+            "how can you be sure it's not a villain pressing another user's delete button? I think i need some kind of face recognition algorithm.", 
+            "09:53:33.555"
+        ], 
+        [
+            "&lt;gabriel_schulhof", 
+            "Hey! Is there an API reference somewhere about creating node addons? All I can find is <a href=\"https://nodejs.org/api/addons.html\" target=\"_blank\" rel=\"nofollow\">https://nodejs.org/api/addons.html</a> which is just examples.", 
+            "09:54:52.658"
+        ], 
+        [
+            "&lt;zalun", 
+            "I think I've got an issue in one of the installed modules - can I just edit it in node_modules to check if that's it?", 
+            "09:55:14.653"
+        ], 
+        [
+            "&lt;gabriel_schulhof", 
+            "For example, I'd like to know how to declare something other than a function on my module.", 
+            "09:55:39.142"
+        ], 
+        [
+            "&lt;lennym", 
+            "zalun: Yes, that will work fine. Just remember to PR your fix back the module ;-)", 
+            "09:55:43.654"
+        ], 
+        [
+            "&lt;gabriel_schulhof", 
+            "Like, OK, NODE_SET_METHOD() got it. It's great. Is there a NODE_SET_OBJECT() for declaring a plain object on the module?", 
+            "09:56:07.055"
+        ], 
+        [
+            "&lt;gabriel_schulhof", 
+            "If I go to the API documentation, all I get is the JS documentation ...", 
+            "09:56:17.321"
+        ], 
+        [
+            "&lt;zalun", 
+            "lennym: just checked and console.log works fine - I'm just trying to find the error - then I would do it properly", 
+            "09:56:37.273"
+        ], 
+        [
+            "&lt;lennym", 
+            "zalun: You my find it easier to clone the repo for the module, and then either npm link to that directory, or just change your package.json to install from a local file path", 
+            "09:57:38.487"
+        ], 
+        [
+            "&lt;zalun", 
+            "thx", 
+            "09:57:42.279"
+        ], 
+        [
+            "&lt;lennym", 
+            "That way if you do fix then you can push the fix back really easily rather than having to copy all the changes", 
+            "09:58:10.080"
+        ], 
+        [
+            "&lt;serard", 
+            "Somome knows why debugging node on webstorm is so long ?", 
+            "10:06:30.498"
+        ], 
+        [
+            "&lt;imZEH", 
+            "is anyone know a middleware that can parse data from excel file", 
+            "10:13:14.065"
+        ], 
+        [
+            "&lt;imZEH", 
+            "somebody ?", 
+            "10:13:22.604"
+        ], 
+        [
+            "&lt;imZEH", 
+            "is anyone known a middleware that can parse data from excel file ?", 
+            "10:15:58.074"
+        ], 
+        [
+            "&lt;stride", 
+            "imzeh: there are plenty of excel libraries on npm (most for the newer xml-based document type)", 
+            "10:16:36.882"
+        ], 
+        [
+            "&lt;imZEH", 
+            "stride: in what specific libraries ? can you send a link for me ?", 
+            "10:17:26.189"
+        ], 
+        [
+            "&lt;stride", 
+            "imzeh: <a href=\"https://www.npmjs.com/search?q=excel\" target=\"_blank\" rel=\"nofollow\">https://www.npmjs.com/search?q=excel</a> <a href=\"https://www.npmjs.com/search?q=xlsx\" target=\"_blank\" rel=\"nofollow\">https://www.npmjs.com/search?q=xlsx</a> <a href=\"https://www.npmjs.com/search?q=xls\" target=\"_blank\" rel=\"nofollow\">https://www.npmjs.com/search?q=xls</a>", 
+            "10:18:12.281"
+        ], 
+        [
+            "&lt;imZEH", 
+            "wow. too many . thanks", 
+            "10:19:35.769"
+        ], 
+        [
+            "&lt;gabriel_schulhof", 
+            "Yaaay for v8 documentation!", 
+            "10:26:48.957"
+        ], 
+        [
+            "&lt;joepie91", 
+            "stride: yep, that was more or less my problem as well - how would you standardize such a thing on a 'global scale'?", 
+            "10:53:34.280"
+        ], 
+        [
+            "&lt;joepie91", 
+            "eg. how do you inform the client of the grace period", 
+            "10:53:37.313"
+        ], 
+        [
+            "&lt;joepie91", 
+            "or grace conditions", 
+            "10:53:38.812"
+        ], 
+        [
+            "&lt;joepie91", 
+            "etc", 
+            "10:56:09.344"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "Hello. So i've learned a bit of node. I'm still very basic. And I was just wondering if there is a website where I can practice making servers? And making webpages. Just for my own practice?", 
+            "11:14:24.877"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "I just want to see if the website that I came up with works", 
+            "11:14:35.224"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "Is there a place where this is possible?", 
+            "11:14:42.851"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "anybody up?", 
+            "11:16:08.699"
+        ], 
+        [
+            "&lt;bhughes", 
+            "PracticePerson: nodeschool.io might be of interest", 
+            "11:17:41.084"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "ok what", 
+            "11:18:10.710"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "I wasn't asking that", 
+            "11:18:16.619"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "haha sorry", 
+            "11:18:20.525"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "I want to &quot;launch&quot; my website in the confines of a free web hosting server", 
+            "11:18:53.356"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "and that website will use javascript and node.js", 
+            "11:19:18.965"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "such a website?", 
+            "11:19:23.738"
+        ], 
+        [
+            "&lt;bhughes", 
+            "ah, right", 
+            "11:19:35.304"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "nodeschool.io seems like a workshop place for learners. which is not what i asked for haha", 
+            "11:19:37.419"
+        ], 
+        [
+            "&lt;bhughes", 
+            "yeah, i misunderstood your question", 
+            "11:20:01.710"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "yeah sorry", 
+            "11:20:04.392"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "any ideas?", 
+            "11:20:23.777"
+        ], 
+        [
+            "&lt;bhughes", 
+            "we've deployed our node.js stuff to AWS, which has a free tier", 
+            "11:20:30.912"
+        ], 
+        [
+            "&lt;bhughes", 
+            "but it requires learning alot about AWS first", 
+            "11:20:44.124"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "oh :(", 
+            "11:20:48.253"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "I wanted to jumpstart right away", 
+            "11:20:53.443"
+        ], 
+        [
+            "&lt;bhughes", 
+            "not really sure what to suggest otherwise, though :/", 
+            "11:21:22.059"
+        ], 
+        [
+            "&lt;netameta", 
+            "Anyone familir with Segmentation fault (core dumped)", 
+            "11:22:26.994"
+        ], 
+        [
+            "&lt;stride", 
+            "practiceperson: heroku has a free tier that might be sufficient", 
+            "11:22:52.971"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "PracticePerson: I would recommend heroku over aws, its real free for small things (not only the first 12 months) and have not incredible horror restrictions like environment variables ^^", 
+            "11:23:08.407"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "heroku", 
+            "11:23:10.450"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "ah I see", 
+            "11:23:15.329"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "well thank you for the help you people", 
+            "11:23:24.247"
+        ], 
+        [
+            "&lt;joepie91", 
+            "PracticePerson: alternatively, you can get a VERY cheap VPS :P", 
+            "11:23:30.344"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "what is a VPS", 
+            "11:23:43.476"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "Sharaal:is it free forever?", 
+            "11:23:49.362"
+        ], 
+        [
+            "&lt;joepie91", 
+            "PracticePerson: virtual private server, basically just a virtual machine hosted in a datacenter... works like a regular server", 
+            "11:23:55.629"
+        ], 
+        [
+            "&lt;joepie91", 
+            "will take a bit more maintenance though", 
+            "11:23:59.178"
+        ], 
+        [
+            "&lt;joepie91", 
+            "but you can install whatever you want", 
+            "11:24:08.282"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "but I cannot afford to lose money right now :(", 
+            "11:24:12.733"
+        ], 
+        [
+            "&lt;netameta", 
+            "Anyone familir with the error : Segmentation fault (core dumped), no idea what causes it", 
+            "11:24:12.897"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "but nothing is as easy as heroku, vps is much more effort to install it", 
+            "11:24:18.959"
+        ], 
+        [
+            "&lt;joepie91", 
+            "there's very, very cheap ones with some limitations: <a href=\"http://lowendspirit.com/index.html\" target=\"_blank\" rel=\"nofollow\">http://lowendspirit.com/index.html</a>", 
+            "11:24:21.704"
+        ], 
+        [
+            "&lt;joepie91", 
+            "3 euro/year", 
+            "11:24:27.494"
+        ], 
+        [
+            "&lt;joepie91", 
+            "but you'll share an IPv4 IP address", 
+            "11:24:42.551"
+        ], 
+        [
+            "&lt;joepie91", 
+            "good to experiment with though :P", 
+            "11:24:46.806"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "PracticePerson: yes, its free in small scale (1 webserver instance, small database / cache) and so on", 
+            "11:24:51.213"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "yeah I want to start learning for the absolute basic in web design", 
+            "11:25:12.741"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "and eventually work up to the real stuff", 
+            "11:25:13.885"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "the real world stuff", 
+            "11:25:21.635"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "the commercial stuff", 
+            "11:25:31.961"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "so wondering if this VPS or heroku route will take me there?", 
+            "11:25:34.873"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "I would use heroku for both, free and for large commercial stuff", 
+            "11:25:50.130"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "no no. i'm not trying to be commercial yet lol", 
+            "11:25:58.948"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "vps is much effort, if you are/have not a sysadmin, I would never try it", 
+            "11:26:06.781"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "I'm saying, I want to practice what the commercial people do lol", 
+            "11:26:10.917"
+        ], 
+        [
+            "&lt;joepie91", 
+            "a VPS isn't *that* much effort", 
+            "11:26:12.537"
+        ], 
+        [
+            "&lt;joepie91", 
+            "it's just nonzero", 
+            "11:26:12.831"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "eventually", 
+            "11:26:17.527"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "heroku is ready in 5 minute with continues deployment and co", 
+            "11:26:31.026"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "I see. well I'll look into both definitely", 
+            "11:26:36.221"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "Ah I have yet another question", 
+            "11:26:46.639"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "whats vendor lock-in?", 
+            "11:27:13.509"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "so sometimes I code, and I code stuff by myself and feel what I want to do to achieve my goal", 
+            "11:27:27.063"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "but I feel like its not efficient and commercial people would not do that", 
+            "11:27:34.345"
+        ], 
+        [
+            "&lt;joepie91", 
+            "Sharaal: being stuck with a certain provider, eg. because their platform is different from what other providers offer, and it is thus costly to move away (either money-wise or time-wise)", 
+            "11:27:37.082"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "How do I ensure that I'm doing what a commercial coder is doing?", 
+            "11:27:38.214"
+        ], 
+        [
+            "&lt;joepie91", 
+            "if you run a VPS, you can migrate to any other VPS from any other provider", 
+            "11:27:44.373"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "and vps no effort? is there a vps which have deployment solved per git push and services per few clicks like mongodb and redis?", 
+            "11:27:44.743"
+        ], 
+        [
+            "&lt;joepie91", 
+            "without issues", 
+            "11:27:51.107"
+        ], 
+        [
+            "&lt;joepie91", 
+            "if you use Heroku, that's not so easy", 
+            "11:27:57.251"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "so sometimes I code, and I code stuff by myself and feel what I want to do to achieve my goal", 
+            "11:27:57.616"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "but I feel like its not efficient and commercial people would not do that", 
+            "11:28:00.853"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "PracticePerson: I am a commercial coder Oo", 
+            "11:28:01.204"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "How do I ensure that I'm doing what a commercial coder is doing?", 
+            "11:28:11.868"
+        ], 
+        [
+            "&lt;joepie91", 
+            "Sharaal: setting up mongodb/redis/etc initially takes a few hours maybe, with no prior knowledge", 
+            "11:28:16.226"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "no no", 
+            "11:28:22.516"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "few hours against few minutes, yes", 
+            "11:28:24.736"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "i'm not talking about the vps heroku stuff", 
+            "11:28:29.169"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "anymore", 
+            "11:28:30.631"
+        ], 
+        [
+            "&lt;joepie91", 
+            "PracticePerson: I wouldn't focus too much on &quot;doing what the commercial coders are doing&quot;", 
+            "11:28:35.071"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "i'm on a different tangent", 
+            "11:28:38.463"
+        ], 
+        [
+            "&lt;joepie91", 
+            "instead, focus on learning how things work, and how to work with them", 
+            "11:28:54.098"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "and focus on your requirements", 
+            "11:29:01.544"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "yeah joepie91 like a commercial coder might use a certain method that is more efficient tho", 
+            "11:29:10.017"
+        ], 
+        [
+            "&lt;joepie91", 
+            "PracticePerson: &quot;commercial coder&quot; has nothing to do with it", 
+            "11:29:12.824"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "yeah i can reach my methods to finish the job", 
+            "11:29:22.091"
+        ], 
+        [
+            "&lt;joepie91", 
+            "PracticePerson: you have a certain set of requirements, and there's a certain set of ideal solutions for those requirements", 
+            "11:29:30.393"
+        ], 
+        [
+            "&lt;joepie91", 
+            "that's what you should work towards", 
+            "11:29:37.725"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "ah I see", 
+            "11:29:38.129"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "*agree :)", 
+            "11:29:46.865"
+        ], 
+        [
+            "&lt;joepie91", 
+            "those requirements will change over time - and you change your solutions along with them", 
+            "11:29:48.574"
+        ], 
+        [
+            "&lt;joepie91", 
+            "as long as you focus on solving the specific requirements you have, you'll do fine, don't worry", 
+            "11:30:00.787"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "I see I see", 
+            "11:30:15.240"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "so what you are saying is I should just do it my way, and finish the job", 
+            "11:30:19.991"
+        ], 
+        [
+            "&lt;joepie91", 
+            "the biggest thing is to not get caught by the &quot;hype&quot; :)", 
+            "11:30:27.312"
+        ], 
+        [
+            "&lt;joepie91", 
+            "not just &quot;your way&quot;", 
+            "11:30:35.144"
+        ], 
+        [
+            "&lt;joepie91", 
+            "you should do it in the best way you can find, from a technical point of view", 
+            "11:30:37.591"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "and also look for packages", 
+            "11:30:44.906"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "that have been made", 
+            "11:30:48.514"
+        ], 
+        [
+            "&lt;joepie91", 
+            "and so that it solves your problems", 
+            "11:30:53.902"
+        ], 
+        [
+            "&lt;joepie91", 
+            "well, code reuse is generally good, yes", 
+            "11:30:54.066"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "to make my work more efficient", 
+            "11:30:57.201"
+        ], 
+        [
+            "&lt;joepie91", 
+            "also", 
+            "11:31:05.482"
+        ], 
+        [
+            "&lt;joepie91", 
+            "[13:28] &lt;Sharaal&gt; few hours against few minutes, yes", 
+            "11:31:10.221"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "okay thank you yall", 
+            "11:31:13.771"
+        ], 
+        [
+            "&lt;joepie91", 
+            "yes, but that is part of the trade-off", 
+            "11:31:26.367"
+        ], 
+        [
+            "&lt;joepie91", 
+            "you get less vendor lock-in, more freedom - in exchange for a few hours one-time time investment", 
+            "11:31:26.531"
+        ], 
+        [
+            "&lt;joepie91", 
+            "PracticePerson: good luck, and don't be afraid to ask questions if you get stuck", 
+            "11:31:38.335"
+        ], 
+        [
+            "&lt;joepie91", 
+            ":)", 
+            "11:31:46.697"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "thank you", 
+            "11:31:58.759"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "you can easy exchange heroku with aws or vps things if its needed", 
+            "11:31:58.984"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "I still have a lot to learn before I can publish", 
+            "11:32:11.289"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "but I am trying to know what my future holds", 
+            "11:32:14.140"
+        ], 
+        [
+            "&lt;joepie91", 
+            "PracticePerson: that's fine - you'll never stop learning", 
+            "11:32:21.419"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            ":)", 
+            "11:32:22.964"
+        ], 
+        [
+            "&lt;joepie91", 
+            "there's always new stuff to learn, all part of the process", 
+            "11:32:31.203"
+        ], 
+        [
+            "&lt;joepie91", 
+            "Sharaal: that's not what I've heard from others... :(", 
+            "11:32:34.189"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "I feel like, there's not many video tutorials for me to learn", 
+            "11:32:35.300"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "And I learn best from videos", 
+            "11:32:57.815"
+        ], 
+        [
+            "&lt;joepie91", 
+            "PracticePerson: I'd recommend trying to get better at (technical) reading", 
+            "11:33:11.205"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "what's technical reading?", 
+            "11:33:14.325"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "you mean books?", 
+            "11:33:15.273"
+        ], 
+        [
+            "&lt;joepie91", 
+            "the majority of information is available in a text format only, and it allows for bringing across much more detail than a video", 
+            "11:33:15.437"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "yuck", 
+            "11:33:16.771"
+        ], 
+        [
+            "&lt;joepie91", 
+            "no", 
+            "11:33:19.700"
+        ], 
+        [
+            "&lt;joepie91", 
+            "technical reading in general", 
+            "11:33:21.921"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "joepie91: thats what I do, private I use heroku, in company we must use aws, easy to build apps maintain both, thats only a few things to care about", 
+            "11:33:23.342"
+        ], 
+        [
+            "&lt;joepie91", 
+            "tutorials, documentation", 
+            "11:33:29.387"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "I think I should get a book though", 
+            "11:33:33.596"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "makes me feel more", 
+            "11:33:34.764"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "wise", 
+            "11:33:36.165"
+        ], 
+        [
+            "&lt;joepie91", 
+            "not a fan of books personally, but mostly because they're not efficient", 
+            "11:33:36.429"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "why are they not efficient?", 
+            "11:33:51.987"
+        ], 
+        [
+            "&lt;joepie91", 
+            "you can get the same information on the internet, but more up to date, and it doesn't cost money", 
+            "11:33:56.448"
+        ], 
+        [
+            "&lt;joepie91", 
+            "PracticePerson: you can't change a book", 
+            "11:33:58.937"
+        ], 
+        [
+            "&lt;joepie91", 
+            "and things move fast", 
+            "11:34:05.030"
+        ], 
+        [
+            "&lt;joepie91", 
+            "so often, by the time your book ships, it's already outdated in some way", 
+            "11:34:05.997"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "+1 for books, having more background informations about the concepts as online tutorials", 
+            "11:34:10.152"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "my book from pubic library tho", 
+            "11:34:16.651"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "so they update it", 
+            "11:34:21.384"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "public*", 
+            "11:34:21.548"
+        ], 
+        [
+            "&lt;joepie91", 
+            "Sharaal: no, that just means you need to look for better tutorials/guides on the internet :)", 
+            "11:34:25.821"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "never saw a good one", 
+            "11:34:36.209"
+        ], 
+        [
+            "&lt;joepie91", 
+            "PracticePerson: it still can't be updated as fast as eg. documentation or a blog post", 
+            "11:34:37.267"
+        ], 
+        [
+            "&lt;joepie91", 
+            "Sharaal: one sec", 
+            "11:34:48.787"
+        ], 
+        [
+            "&lt;joepie91", 
+            "Sharaal: here's an example: <a href=\"http://robotlolita.me/2011/10/09/understanding-javascript-oop.html\" target=\"_blank\" rel=\"nofollow\">http://robotlolita.me/2011/10/09/understanding-javascript-oop.html</a>", 
+            "11:35:00.913"
+        ], 
+        [
+            "&lt;netameta", 
+            "Anyone knows what Segmentation fault (core dumped) means ?? cant find anything consistant about i", 
+            "11:35:06.827"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "thats one topic of the whole thing", 
+            "11:35:10.756"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "can node.js be used to make an IRC server?", 
+            "11:35:21.537"
+        ], 
+        [
+            "&lt;joepie91", 
+            "Sharaal: yes, that's the idea", 
+            "11:35:23.045"
+        ], 
+        [
+            "&lt;joepie91", 
+            "PracticePerson: yes", 
+            "11:35:25.555"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "PracticePerson: theoretical, yes", 
+            "11:35:29.569"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "what about java?", 
+            "11:35:30.750"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "can java be used to make IRC server?", 
+            "11:35:43.180"
+        ], 
+        [
+            "&lt;joepie91", 
+            "PracticePerson: yes, but I would not recommend java :)", 
+            "11:35:45.245"
+        ], 
+        [
+            "&lt;joepie91", 
+            "not for that anyway", 
+            "11:35:52.483"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "well I know there is a lot of hate", 
+            "11:35:54.715"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "but java", 
+            "11:35:59.394"
+        ], 
+        [
+            "&lt;joepie91", 
+            "Sharaal: let me find you another example", 
+            "11:35:59.634"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "is not that bad", 
+            "11:36:16.533"
+        ], 
+        [
+            "&lt;joepie91", 
+            "Sharaal: <a href=\"http://mrale.ph/blog/2015/01/11/whats-up-with-monomorphism.html\" target=\"_blank\" rel=\"nofollow\">http://mrale.ph/blog/2015/01/11/whats-up-with-monomorphism.html</a>", 
+            "11:36:22.246"
+        ], 
+        [
+            "&lt;joepie91", 
+            "there's plenty of material like this around", 
+            "11:36:49.571"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "joepie91: I will always prefer books, not for the concrete implementations, they can outdate very fast, but the concepts of the things to understand the backgrounds. the other things can be easy learn if understand the things behind", 
+            "11:36:52.563"
+        ], 
+        [
+            "&lt;joepie91", 
+            "PracticePerson: I've only seen one point at which I consider Java better than Node.js, and that is heavy computation", 
+            "11:36:57.651"
+        ], 
+        [
+            "&lt;joepie91", 
+            "other than that, every single thing I've seen about it makes me go &quot;eh&quot;", 
+            "11:37:06.996"
+        ], 
+        [
+            "&lt;joepie91", 
+            "(and even for heavy computation, there are likely better options, such as other languages that compile to the JVM)", 
+            "11:37:37.509"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "what is heavy computation?", 
+            "11:37:42.494"
+        ], 
+        [
+            "&lt;joepie91", 
+            "Sharaal: but again, this information is widely available on the internet, you don't need a book for this", 
+            "11:37:49.524"
+        ], 
+        [
+            "&lt;joepie91", 
+            "PracticePerson: literally, computing a lot of things", 
+            "11:37:51.010"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "joepie91:do you know java too?", 
+            "11:37:55.640"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "I think for heavy computation the key is be able to scaling, thats not a language problem, thats a architecture thing", 
+            "11:38:07.162"
+        ], 
+        [
+            "&lt;joepie91", 
+            "PracticePerson: if what you're doing uses 100% of your CPU, you should probably not be using Node.js :)", 
+            "11:38:16.065"
+        ], 
+        [
+            "&lt;joepie91", 
+            "(as a very simple rule of thumb)", 
+            "11:38:26.093"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "joepie91: not need, but I love to have one thing give me an overview about the whole topic, not collect little pieces ^^", 
+            "11:38:46.453"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "joepie91:do you know java too?", 
+            "11:38:53.693"
+        ], 
+        [
+            "&lt;joepie91", 
+            "Sharaal: an overview is generally mutually exclusive from 'in-depth' :)", 
+            "11:38:57.358"
+        ], 
+        [
+            "&lt;joepie91", 
+            "PracticePerson: only small bits", 
+            "11:39:06.243"
+        ], 
+        [
+            "&lt;joepie91", 
+            "I know enough about Java to know why I would never use it, basically", 
+            "11:39:15.331"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "lol", 
+            "11:39:24.249"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "but Java is used everywhere though", 
+            "11:39:38.343"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "Androids", 
+            "11:39:38.532"
+        ], 
+        [
+            "&lt;joepie91", 
+            "many languages are used everywhere", 
+            "11:39:53.089"
+        ], 
+        [
+            "&lt;joepie91", 
+            "see, this is exactly the hype thing I was warning for", 
+            "11:40:01.710"
+        ], 
+        [
+            "&lt;joepie91", 
+            "you shouldn't use something because &quot;everybody else uses it&quot;", 
+            "11:40:07.730"
+        ], 
+        [
+            "&lt;joepie91", 
+            "you should understand the strong and weak points of something", 
+            "11:40:16.445"
+        ], 
+        [
+            "&lt;joepie91", 
+            "and with that information, you should decide whether it's the right choice for what you want to do", 
+            "11:40:22.685"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "but i make android apps lol", 
+            "11:40:29.652"
+        ], 
+        [
+            "&lt;joepie91", 
+            "whether anybody else uses it, doesn't matter for anything other than &quot;how good is community support going to be for this&quot;", 
+            "11:40:35.354"
+        ], 
+        [
+            "&lt;joepie91", 
+            "PracticePerson: then you need Java, unless you use something like Cordova or PhoneGap", 
+            "11:41:02.057"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "no I know Java", 
+            "11:41:05.846"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "I'm proficient in it", 
+            "11:41:08.044"
+        ], 
+        [
+            "&lt;joepie91", 
+            "emphasis on 'need'", 
+            "11:41:17.240"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "except I'm not that great at building Java web apps", 
+            "11:41:28.286"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "but offline stuff I'm very good at", 
+            "11:41:30.888"
+        ], 
+        [
+            "&lt;joepie91", 
+            "you don't have much of a choice on Android", 
+            "11:41:43.167"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "yeah. The main thing is just a .java file haha", 
+            "11:41:50.133"
+        ], 
+        [
+            "&lt;joepie91", 
+            "er", 
+            "11:41:58.589"
+        ], 
+        [
+            "&lt;joepie91", 
+            "FxOS?", 
+            "11:42:03.409"
+        ], 
+        [
+            "&lt;joepie91", 
+            "whatever their 'official' abbreviation was", 
+            "11:42:06.527"
+        ], 
+        [
+            "&lt;joepie91", 
+            "(Firefox OS)", 
+            "11:42:13.457"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "for androids?", 
+            "11:42:16.426"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "damn. i wanna see", 
+            "11:42:23.509"
+        ], 
+        [
+            "&lt;joepie91", 
+            "no, Firefox OS is an operating system", 
+            "11:42:25.400"
+        ], 
+        [
+            "&lt;jonathanj", 
+            "is it possible to use testable timers for Bluebird promises?", 
+            "11:42:32.991"
+        ], 
+        [
+            "&lt;joepie91", 
+            "a nobile operating system", 
+            "11:42:36.346"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "ye for androids", 
+            "11:42:36.616"
+        ], 
+        [
+            "&lt;joepie91", 
+            "mobile*", 
+            "11:42:38.474"
+        ], 
+        [
+            "&lt;joepie91", 
+            "no", 
+            "11:42:41.157"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "wat", 
+            "11:42:42.900"
+        ], 
+        [
+            "&lt;joepie91", 
+            "it has nothing to do with Android", 
+            "11:42:47.691"
+        ], 
+        [
+            "&lt;jonathanj", 
+            "i'd like to be able to test my delayed promises without relying on the wall clock", 
+            "11:42:48.090"
+        ], 
+        [
+            "&lt;joepie91", 
+            "it's an independent OS", 
+            "11:42:53.875"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "oh ok", 
+            "11:43:18.434"
+        ], 
+        [
+            "&lt;joepie91", 
+            "PracticePerson: <a href=\"https://developer.mozilla.org/en-US/Firefox_OS\" target=\"_blank\" rel=\"nofollow\">https://developer.mozilla.org/en-US/Firefox_OS</a>", 
+            "11:43:24.561"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "ok", 
+            "11:45:05.394"
+        ], 
+        [
+            "&lt;steelbrain__", 
+            "join #asterisk", 
+            "11:55:52.734"
+        ], 
+        [
+            "&lt;steelbrain__", 
+            "Oops, forgot the slash", 
+            "11:56:20.680"
+        ], 
+        [
+            "&lt;PracticePerson", 
+            "whats that?", 
+            "11:56:29.739"
+        ], 
+        [
+            "&lt;cek", 
+            "helo. What's up with TLS PFS ciphers on node 0.10?", 
+            "12:22:11.474"
+        ], 
+        [
+            "&lt;n0der", 
+            "hi guys, has anyone any idea about this <a href=\"http://stackoverflow.com/questions/29558018/how-to-call-socket-ios-emit-from-express-js-route\" target=\"_blank\" rel=\"nofollow\">http://stackoverflow.com/questions/29558018/how-to-call-socket-ios-emit-from-express-js-route</a>", 
+            "12:51:42.883"
+        ], 
+        [
+            "&lt;mkode", 
+            "Anyone got generators working with JXcore?", 
+            "12:53:19.406"
+        ], 
+        [
+            "&lt;mkode", 
+            "Which npm is recommended for forking node instance per every request?", 
+            "13:02:52.713"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "mkode: what? you don't want to fork instances depends on the requests", 
+            "13:07:25.304"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "mkode: fork depends on the hardware, cpu and ram, one instance can handle many requests", 
+            "13:07:55.871"
+        ], 
+        [
+            "&lt;mkode", 
+            "Sharaal: I want it to behave just like php", 
+            "13:09:16.259"
+        ], 
+        [
+            "&lt;mkode", 
+            "or other languages", 
+            "13:09:31.461"
+        ], 
+        [
+            "&lt;Nouv", 
+            "As a learning exercise, I want to start a new project and make basically a twitter clone.  I'm familiar with PHP, but want to use node and angular to learn about them.  Is there a recommended &quot;project layout&quot; for something like this?", 
+            "13:09:40.933"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "ok the whole vender dependancies thing is nice... but it's quite irritating when people don't update their deps", 
+            "13:09:41.564"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "mkode: why not use php if you want this behavior? why you want this behavior?", 
+            "13:10:00.676"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "i'm looking at you, grunt-jasmine-node", 
+            "13:10:30.719"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "Nouv: I have skeletons for me which worked really nice for the first things, if you are interested: <a href=\"https://github.com/dragonnodejs/\" target=\"_blank\" rel=\"nofollow\">https://github.com/dragonnodejs/</a>", 
+            "13:11:00.425"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "err wait i might be doing something wrong", 
+            "13:11:25.650"
+        ], 
+        [
+            "&lt;Nouv", 
+            "Sharaal: What about Yeoman?  I see that mentioned quite a bit", 
+            "13:11:49.415"
+        ], 
+        [
+            "&lt;khmer", 
+            "Sharaal: yeoman is p nice", 
+            "13:13:36.592"
+        ], 
+        [
+            "&lt;khmer", 
+            "hey does anyone know a good technique to force a readable stream to close? i'm having trouble with hanging readable streams that never flush", 
+            "13:14:28.836"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "Nouv: I don't really like that scaffolding things, not saw that much benefits, but I'm not totally against them. If I see benefits I use the tools", 
+            "13:15:37.841"
+        ], 
+        [
+            "&lt;Nouv", 
+            "Why?", 
+            "13:15:48.145"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "not enough benefit and I love a clear techstack with not that much dependencies", 
+            "13:16:26.212"
+        ], 
+        [
+            "&lt;Nouv", 
+            "hm", 
+            "13:16:49.165"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "for me new module is new file and 3 lines of code, no need a generator for that", 
+            "13:17:35.145"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "and new project is just fork a skeleton", 
+            "13:17:37.373"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "its the same with grunt, I don't use it cause the npm scripts thing is enough if the techstack is clear and small enough", 
+            "13:18:16.573"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "ok i can't figure out where grunt-jasmine-node is getting its jasmine from", 
+            "13:18:36.878"
+        ], 
+        [
+            "&lt;Sharaal", 
+            "but I build many small apps, not one large, so this is more the way for small pieces", 
+            "13:19:05.213"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "with vanilla jasmine-node, you have to install jasmine in the project and it uses that... but there is no jasmine install in grunt-jasmine-node, and even when i install it i get reference errors for the `pending` thing included in more recent jasmine versions", 
+            "13:19:42.220"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "where do i look to figure out where it's getting jasmine from", 
+            "13:20:12.601"
+        ], 
+        [
+            "&lt;geirha", 
+            "khmer: child processes?", 
+            "13:21:26.756"
+        ], 
+        [
+            "&lt;khmer", 
+            "geirha: https requests through a proxy, in this instance.", 
+            "13:21:33.034"
+        ], 
+        [
+            "&lt;cek", 
+            "Do I understand correctly that DHE ciphers are not supported in node 0.10?", 
+            "13:21:36.158"
+        ], 
+        [
+            "&lt;khmer", 
+            "geirha: when they're coming through the proxy and i'm piping them through a transform stream they don't seem to ever flush", 
+            "13:22:01.294"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "oh awesome: ./node_modules/grunt-jasmine-node/node_modules/jasmine-node/lib/jasmine-node/jasmine-1.3.1.js", 
+            "13:22:30.344"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "wtf?", 
+            "13:22:39.964"
+        ], 
+        [
+            "&lt;RLa", 
+            "i would just use mocha", 
+            "13:23:38.059"
+        ], 
+        [
+            "&lt;RLa", 
+            "not sure why everyone wants to use jasmine", 
+            "13:23:44.603"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "i guess i do have to use grunt-jasmine-nodejs", 
+            "13:24:19.087"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "blarg", 
+            "13:24:24.686"
+        ], 
+        [
+            "&lt;RLa", 
+            "lol, grunt and plugins, just like gulp and plugins", 
+            "13:25:37.884"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "RLa: we're using it across multiple products, and i'm looking to make the jump from tech support to development", 
+            "13:25:59.480"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "RLa: i kinda have to tow the line :)", 
+            "13:26:05.735"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "also i'm super new to JS, so i don't know any better ;)", 
+            "13:26:18.406"
+        ], 
+        [
+            "&lt;khmer", 
+            "cdunklau: don't let people lol at your use of good, production quality tools that they don't think are cool anymore :)", 
+            "13:27:36.045"
+        ], 
+        [
+            "&lt;lennym", 
+            "grunt-jasmine-node is a particular issue - it recently merged a bugfix PR of mine that had been open for nearly a year.", 
+            "13:27:54.243"
+        ], 
+        [
+            "&lt;khmer", 
+            "cdunklau: if your gruntfiles start to feel cumbersome to your or your builds are very slow, look at other options. but if it works it works", 
+            "13:28:01.097"
+        ], 
+        [
+            "&lt;lennym", 
+            "I know open-source maintainers have other things to do, but...", 
+            "13:28:25.875"
+        ], 
+        [
+            "&lt;khmer", 
+            "cdunklau: do you have a bunch of tests written in jasmine?", 
+            "13:28:45.412"
+        ], 
+        [
+            "&lt;RLa", 
+            "open source is seriously underfunded", 
+            "13:28:48.194"
+        ], 
+        [
+            "&lt;lennym", 
+            "cdunklau: As a general rule - a grunt module to do a thing will likely have the package that does that actual thing as a dependency", 
+            "13:29:33.409"
+        ], 
+        [
+            "&lt;lennym", 
+            "cdunklau: And the grunt-ness is just a wrapper around that module.", 
+            "13:29:49.347"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "khmer: in our existing codebase yes, but the project i'm doing is a little side thing... but it might get used in the product eventually, so i'm keeping it consistant", 
+            "13:31:02.117"
+        ], 
+        [
+            "&lt;khmer", 
+            "cdunklau: i had to move away from jasmine a while ago because it DID get in my way, unlike grunt so far.", 
+            "13:31:20.508"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "lennym: yeah, that's what i thought, but grunt-jasmine-node apparently failes at that", 
+            "13:31:37.267"
+        ], 
+        [
+            "&lt;khmer", 
+            "cdunklau: you can reproduce a lot of the jasmine API using a more modular runner, mocha, plus chai for assertions", 
+            "13:31:38.125"
+        ], 
+        [
+            "&lt;myndzi", 
+            "mocha is okay but sucks for reporters btw", 
+            "13:32:11.092"
+        ], 
+        [
+            "&lt;khmer", 
+            "cdunklau: you get `describe`, `it`, and with chai you get expectations, which you're used to", 
+            "13:32:27.463"
+        ], 
+        [
+            "&lt;khmer", 
+            "cdunklau: so migrating the tests is relatively painless. certainly easier than like, moving to tap", 
+            "13:32:42.882"
+        ], 
+        [
+            "&lt;lennym", 
+            "cdunklau: to be fair, jasmine-node is the dependency", 
+            "13:33:43.873"
+        ], 
+        [
+            "&lt;lennym", 
+            "cdunklau: But I would have expected a dependency on jasmine-core inside there.", 
+            "13:33:52.412"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "lennym: yeah but some way the grunt plugin is set up prevents it from using the first jasmine version it finds, so it ends up using the ancient 1.3 version included with jasmine-node", 
+            "13:34:55.713"
+        ], 
+        [
+            "&lt;lennym", 
+            "I don't think that's the grunt plugin's fault.", 
+            "13:34:56.841"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "lennym: if i install jasmine-node globally and run it directly, with a new jasmine in the local modules, it works fine", 
+            "13:34:59.709"
+        ], 
+        [
+            "&lt;lennym", 
+            "Oh.", 
+            "13:35:04.430"
+        ], 
+        [
+            "&lt;lennym", 
+            "Fair enough", 
+            "13:35:05.785"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "yeah", 
+            "13:35:07.472"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "i don't get it", 
+            "13:35:08.193"
+        ], 
+        [
+            "&lt;lennym", 
+            "I stand corrected.", 
+            "13:35:13.267"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "grunt-jasmine-nodejs works though, although the options are different", 
+            "13:35:21.962"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "oh well, it works", 
+            "13:35:24.227"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "khmer: how did it get in the way?", 
+            "13:36:04.464"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "i'm still blown away by the nice reporting and the structure of the tests, although now i see the api is similar to mocha", 
+            "13:36:53.713"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "i'm coming from python... so J/XUnit... so... crap", 
+            "13:36:57.103"
+        ], 
+        [
+            "&lt;khmer", 
+            "cdunklau: poor support for promises, iirc. seemed like abandonware for a while--bugs were open forever", 
+            "13:36:57.867"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "this is a breath of fresh air", 
+            "13:37:10.047"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "khmer: ah, good to know", 
+            "13:37:28.505"
+        ], 
+        [
+            "&lt;khmer", 
+            "cdunklau: yeah, there's actually some contention in node on this. some folks want tests to be very simple and imperative. node's builtin assert module, etc.", 
+            "13:37:50.085"
+        ], 
+        [
+            "&lt;khmer", 
+            "people like this either roll their own tests or use like, nodeunit or tap", 
+            "13:37:55.139"
+        ], 
+        [
+            "&lt;khmer", 
+            "tape i guess", 
+            "13:37:56.052"
+        ], 
+        [
+            "&lt;GreenJello", 
+            "mocha also makes it easy to write powerful abstractions; I haven't looked back at jasmine much since I switched years ago, so maybe it's better", 
+            "13:38:05.022"
+        ], 
+        [
+            "&lt;khmer", 
+            "others want tests to be very descriptive and BDD style, so that the spec is effectively also a functional description of the software", 
+            "13:38:30.094"
+        ], 
+        [
+            "&lt;khmer", 
+            "i'm kinda the latter, my test suites are usually pretty describey", 
+            "13:38:30.347"
+        ], 
+        [
+            "&lt;GreenJello", 
+            "this is my favorite, look at the example :-) <a href=\"https://www.npmjs.com/package/mocha-jsdom\" target=\"_blank\" rel=\"nofollow\">https://www.npmjs.com/package/mocha-jsdom</a>", 
+            "13:38:38.464"
+        ], 
+        [
+            "&lt;lennym", 
+            "That I think is one of the weaknesses of jasmine - it tried to do all the things, and didn't do any particularly well.", 
+            "13:38:55.347"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "khmer: on the python side, py.test makes things muuuch better than the normal J/XUnit stuff, and it still works with the normal J/XUnit stuff so migrating is a breeze", 
+            "13:39:02.086"
+        ], 
+        [
+            "&lt;lennym", 
+            "Whereas mocha just lets you delegate out to other packages", 
+            "13:39:03.982"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "khmer: so it's not all bad over there :)", 
+            "13:39:13.216"
+        ], 
+        [
+            "&lt;khmer", 
+            "cdunklau: no, python has got great BDD tools!", 
+            "13:39:21.080"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "i've never played with them", 
+            "13:39:38.606"
+        ], 
+        [
+            "&lt;khmer", 
+            "behave, gherkin", 
+            "13:39:40.992"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "khmer: i mean the stdlib stuff.", 
+            "13:40:08.121"
+        ], 
+        [
+            "&lt;khmer", 
+            "oh. yeah i'm a fan of using test tools, not cowboy rolling your own from the stdlib every time :)", 
+            "13:40:09.015"
+        ], 
+        [
+            "&lt;dsadasdsad", 
+            "hiiiii", 
+            "13:40:25.837"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "tox makes things super nice too... but node's module system beats the hell out of python's", 
+            "13:40:38.282"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "so you don't really even need something like virtualenvs", 
+            "13:40:43.985"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "and wrappers thereupon", 
+            "13:40:59.671"
+        ], 
+        [
+            "&lt;khmer", 
+            "lol", 
+            "13:41:09.594"
+        ], 
+        [
+            "&lt;khmer", 
+            "the name's Thereupon. Wrappers Thereupon.", 
+            "13:41:15.854"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "heh", 
+            "13:41:30.031"
+        ], 
+        [
+            "&lt;khmer", 
+            "but anyway, try mocha + chai", 
+            "13:41:37.338"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "i think my german is taking over my english a little more every day", 
+            "13:41:39.130"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "interesting", 
+            "13:41:39.294"
+        ], 
+        [
+            "&lt;khmer", 
+            "+ chai-as-promised if you want native promise stuff", 
+            "13:41:41.301"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "haven't messed with promises yet, but i suspect that will come soon once i get into the talk-to-the-api part of this project", 
+            "13:42:11.231"
+        ], 
+        [
+            "&lt;GreenJello", 
+            "one thing I've noticed is people build test frameworks on top of jasmine a lot", 
+            "13:42:22.902"
+        ], 
+        [
+            "&lt;GreenJello", 
+            "e.g. jest and protractor", 
+            "13:42:23.164"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "right now i'm stuck with how much xmldoc sucks :D", 
+            "13:42:30.956"
+        ], 
+        [
+            "&lt;khmer", 
+            "as in. somePromise.should.eventually.be(&quot;value&quot;)", 
+            "13:42:34.171"
+        ], 
+        [
+            "&lt;khmer", 
+            "that's kinda nice", 
+            "13:42:48.874"
+        ], 
+        [
+            "&lt;khmer", 
+            "or i guess in expect it's expect(somePromise).to.eventually.be(&quot;value&quot;)", 
+            "13:42:54.701"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "&quot;hey xmldoc, is this good XML? &lt;obviously&gt;&lt;bad&gt;&lt;/xml&gt;&quot;", 
+            "13:43:03.549"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "&lt;xmldoc&gt;: why sure!", 
+            "13:43:13.171"
+        ], 
+        [
+            "&lt;khmer", 
+            "&quot;we're friends, right?&quot;", 
+            "13:43:27.591"
+        ], 
+        [
+            "&lt;RLa", 
+            "btw, xml tools still have entity expansion issues", 
+            "13:44:20.264"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "i mean it thankfully wouldn't be too hard to either hack xmldoc to add error reporting, or preprocess the file with xmllint or whatever..", 
+            "13:44:38.632"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "but still holy crap", 
+            "13:44:46.930"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "RLa: hah, i doubt this thing even does entities", 
+            "13:44:53.852"
+        ], 
+        [
+            "&lt;RLa", 
+            "how?", 
+            "13:44:55.096"
+        ], 
+        [
+            "&lt;RLa", 
+            "wait, why do you need xmldoc at all?", 
+            "13:45:46.908"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "RLa: <a href=\"https://github.com/isaacs/sax-js#regarding-doctypes-and-entitys\" target=\"_blank\" rel=\"nofollow\">https://github.com/isaacs/sax-js#regarding-doctypes-and-entitys</a>", 
+            "13:45:49.784"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "RLa: because reasons", 
+            "13:46:00.178"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "RLa: video metadata formats! Joy!", 
+            "13:46:10.871"
+        ], 
+        [
+            "&lt;RLa", 
+            "that xml is embedded in videos? really?", 
+            "13:46:54.874"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "nah, sidechannel stuff", 
+            "13:46:57.418"
+        ], 
+        [
+            "&lt;pramodxyle", 
+            "any good user management system for node js ? with proper ability to add a user, delete a user and the usual stuff ?", 
+            "13:47:06.171"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "it's quite uninteresting, TBH", 
+            "13:47:21.360"
+        ], 
+        [
+            "&lt;cdunklau", 
+            "more like infuriating", 
+            "13:47:55.258"
+        ], 
+        [
+            "&lt;DeviaVir", 
+            "pramodxyle: <a href=\"http://stackoverflow.com/questions/11534412/any-good-user-management-framework-for-node-js\" target=\"_blank\" rel=\"nofollow\">http://stackoverflow.com/questions/11534412/any-good-user-management-framework-for-node-js</a>", 
+            "13:48:08.238"
+        ], 
+        [
+            "&lt;StrangeWill", 
+            "Anyone here that can let me pick their brain about changes in v8 between 3.x and 4.x regarding TerminateExecution? I\u2019m attempting to get the node module Tripwire upgraded to support node 0.12 but Nan doesn\u2019t cover this and using isolates isn\u2019t working as it did in 3.x.", 
+            "13:48:40.381"
+        ], 
+        [
+            "&lt;pramodxyle", 
+            "DeviaVir: yep, was checking that earlier...had used passport quite sometimes back..but as its  mentioned in stackoverflow, its not a &quot;User Management System&quot;..maybe i'll check out the other options mentioned there", 
+            "13:49:33.272"
+        ], 
+        [
+            "&lt;StrangeWill", 
+            "eg: using TerminateExecution(Isolate*) in 3.x results in the process throwing an exception, in 4.x the process silently terminates.", 
+            "13:50:05.350"
+        ], 
+        [
+            "&lt;DeviaVir", 
+            "pramodxyle: should be fairly easy to &quot;roll your own&quot; using sequelize and promises", 
+            "13:50:12.793"
+        ], 
+        [
+            "&lt;xananax", 
+            "Hey. Looking for a framework that will allow me to define resources that will work the same through REST or sockets (a.k.a, define a resouce once and have it behave the same if it's requested through either method). I don't want templating, or anything else. File server is cool, but I can always plug that in myself. Any idea?", 
+            "13:50:28.624"
+        ], 
+        [
+            "&lt;DeviaVir", 
+            "pramodxyle: But when you're looking for an &quot;all in one&quot;, one of the solutions mentioned on stackoverflow is your best bet", 
+            "13:50:30.458"
+        ], 
+        [
+            "&lt;GreenJello", 
+            "StrangeWill, v8 questions have about 1/30 success rate here, not sure where to redirect people but if you figure it out let me know", 
+            "13:50:56.344"
+        ], 
+        [
+            "&lt;StrangeWill", 
+            "GreenJello: Hah, that\u2019s why I ended up here, no v8 IRC, they recommend the #chromium channel, but that was a no-go.", 
+            "13:51:03.520"
+        ], 
+        [
+            "&lt;StrangeWill", 
+            "My next bet is to just post to their user group and pray", 
+            "13:51:25.365"
+        ], 
+        [
+            "&lt;pramodxyle", 
+            "DeviaVir: yep", 
+            "13:51:49.361"
+        ], 
+        [
+            "&lt;joepie91", 
+            "StrangeWill: fwiw, <a href=\"http://v8dox.com/\" target=\"_blank\" rel=\"nofollow\">http://v8dox.com/</a>", 
+            "14:01:38.268"
+        ], 
+        [
+            "&lt;joepie91", 
+            "might be of use", 
+            "14:01:41.383"
+        ], 
+        [
+            "&lt;DeviaVir", 
+            "xananax: Bit of a shot in the dark, but maybe the LoopBack framework is something for you. xananax", 
+            "14:01:54.371"
+        ], 
+        [
+            "&lt;StrangeWill", 
+            "oh geez", 
+            "14:01:57.743"
+        ], 
+        [
+            "&lt;DeviaVir", 
+            "xananax: <a href=\"https://strongloop.com/node-js/loopback-framework/\" target=\"_blank\" rel=\"nofollow\">https://strongloop.com/node-js/loopback-framework/</a>", 
+            "14:02:01.370"
+        ], 
+        [
+            "&lt;StrangeWill", 
+            "joepie91: got my versions wrong, thanks, that helps a lot", 
+            "14:02:10.209"
+        ], 
+        [
+            "&lt;joepie91", 
+            "StrangeWill: if you're working with v8 stuff, I'd definitely recommend keeping that bookmarked :)", 
+            "14:02:51.515"
+        ], 
+        [
+            "&lt;StrangeWill", 
+            "Done and done", 
+            "14:03:08.668"
+        ], 
+        [
+            "&lt;joepie91", 
+            "(I should add that I don't do any native addon or v8 stuff, but it seems to have helped out people the last few times I linked it, heh)", 
+            "14:04:32.779"
+        ], 
+        [
+            "&lt;StrangeWill", 
+            "It could actually be node\u2019s fault attempting to handle the process terminating. :\\ but I doubt that\u2019s changed really", 
+            "14:05:13.877"
+        ], 
+        [
+            "&lt;Leonw_", 
+            "Hi all", 
+            "14:07:57.450"
+        ], 
+        [
+            "&lt;Leonw_", 
+            "what should I use as process manager for production deployments... PM2 or Upstart/Systemd?", 
+            "14:08:31.106"
+        ], 
+        [
+            "&lt;StrangeWill", 
+            "Leonw_: we\u2019re deploying pm2, so far kind of sad about the shaky implementation of it and obsecure errors, but once you have it configured correctly it looks solid.", 
+            "14:10:25.341"
+        ], 
+        [
+            "&lt;StrangeWill", 
+            "Also pm2 still relies on upstart/systemd", 
+            "14:10:56.233"
+        ], 
+        [
+            "&lt;Leonw_", 
+            "StrangeWill: thank for the input mate... I was tasked to research the current status of it", 
+            "14:11:13.239"
+        ], 
+        [
+            "&lt;StrangeWill", 
+            "but the auto-clustering of processes is really nice :)", 
+            "14:11:40.407"
+        ], 
+        [
+            "&lt;StrangeWill", 
+            "just be prepared to go \u201cwhy is PM2 puking?!, oh I have a space in a node flag\u201d type stuff", 
+            "14:11:48.836"
+        ], 
+        [
+            "&lt;StrangeWill", 
+            "well and like", 
+            "14:11:50.436"
+        ], 
+        [
+            "&lt;StrangeWill", 
+            "BEFORE the flag", 
+            "14:11:52.732"
+        ], 
+        [
+            "&lt;StrangeWill", 
+            "that\u2019s an odd one", 
+            "14:11:56.664"
+        ], 
+        [
+            "&lt;StrangeWill", 
+            "it\u2019s in the docs that way too", 
+            "14:12:04.706"
+        ], 
+        [
+            "&lt;Leonw_", 
+            "LOL", 
+            "14:12:17.118"
+        ], 
+        [
+            "&lt;Leonw_", 
+            "being there... with supervisord at least...", 
+            "14:12:20.894"
+        ], 
+        [
+            "&lt;Leonw_", 
+            "some strange issues depending on how you set the config file", 
+            "14:12:40.722"
+        ], 
+        [
+            "&lt;Leonw_", 
+            "but nice to hear! :)", 
+            "14:12:49.203"
+        ], 
+        [
+            "&lt;Leonw_", 
+            " will do some testing and came back if I have any issue", 
+            "14:12:52.495"
+        ], 
+        [
+            "&lt;Leonw_", 
+            "thanks a lot!! :D", 
+            "14:12:53.049"
+        ], 
+        [
+            "&lt;StrangeWill", 
+            "we also had the cluster not listening on any port, but haven\u2019t talked to the dev that fixed it yet", 
+            "14:12:58.523"
+        ], 
+        [
+            "&lt;StrangeWill", 
+            "No problem", 
+            "14:13:03.280"
+        ], 
+        [
+            "&lt;StrangeWill", 
+            "again \u2014 probably a config issue", 
+            "14:13:22.561"
+        ], 
+        [
+            "&lt;joepie91", 
+            "StrangeWill: that sounds like somebody needs a better option parser.", 
+            "14:15:16.381"
+        ], 
+        [
+            "&lt;StrangeWill", 
+            "Yeah", 
+            "14:16:08.662"
+        ], 
+        [
+            "&lt;StrangeWill", 
+            "well pretty sure it\u2019s pm2, it\u2019s just an array of strings", 
+            "14:16:11.548"
+        ], 
+        [
+            "&lt;DeviaVir", 
+            "StrangeWill: Actually had that exact issue with pm2 as well. Even when defining cluster to use exactly 1 process, it would still start as many as the cores would allow", 
+            "14:21:24.235"
+        ], 
+        [
+            "&lt;DeviaVir", 
+            "StrangeWill: But still none listening on the actual ports defined in the express app", 
+            "14:22:16.269"
+        ], 
+        [
+            "&lt;QuestionTarantin", 
+            "hello anybody there?", 
+            "14:30:42.066"
+        ], 
+        [
+            "&lt;Asterfield", 
+            "So, I have a piece of code in which request throws UNABLE_TO_VERIFY_LEAF_SIGNATURE, but the connection in just fine in Firefox, Chrome, and Opera", 
+            "14:32:27.942"
+        ], 
+        [
+            "&lt;Asterfield", 
+            "The certificate is a StartSSL wildcard cert", 
+            "14:32:38.325"
+        ], 
+        [
+            "&lt;Asterfield", 
+            "Why is this happening?", 
+            "14:33:33.376"
+        ], 
+        [
+            "&lt;Asterfield", 
+            "Do I need to specify a list of my trusted certificates in requestjs?", 
+            "14:37:54.047"
+        ], 
+        [
+            "&lt;galaxyAbstractor", 
+            "Hi, I'm trying to write a node-wrapper around one of our C libs, and I'm currently trying out the node-ffi and ref module, anyone used it? I got it working for basic stuff, but I'm kinda lost with a C function that returns a StringMap, here's a short example: <a href=\"https://gist.github.com/galaxyAbstractor/2a06535f607dfff0f55d\" target=\"_blank\" rel=\"nofollow\">https://gist.github.com/galaxyAbstractor/2a06535f607dfff0f55d</a>", 
+            "14:38:15.126"
+        ], 
+        [
+            "&lt;galaxyAbstractor", 
+            "I've managed to get the first element of the &quot;keys&quot; array, but I'm lost on how to get the rest of it", 
+            "14:38:55.667"
+        ], 
+        [
+            "&lt;galaxyAbstractor", 
+            "Anyone here worked with node and node-ffi like this?", 
+            "14:39:23.427"
+        ], 
+        [
+            "&lt;DeviaVir", 
+            "Asterfield: Ran into this before, you need the intermediates and root certificates sorted", 
+            "14:45:46.134"
+        ], 
+        [
+            "&lt;Asterfield", 
+            "Ah, interesting. I'll run SSLlabs on the certs", 
+            "14:46:15.508"
+        ], 
+        [
+            "&lt;DeviaVir", 
+            "Asterfield: <a href=\"http://stackoverflow.com/a/20091919/1222881\" target=\"_blank\" rel=\"nofollow\">http://stackoverflow.com/a/20091919/1222881</a>", 
+            "14:46:32.436"
+        ], 
+        [
+            "&lt;Asterfield", 
+            "DeviaVir: That defeats the whole point of SSL, does it not?", 
+            "14:47:01.437"
+        ], 
+        [
+            "&lt;DeviaVir", 
+            "Asterfield: When I had the problem, I informed the third party to check their intermediate and root certificates, they found a problem (I think one actually expired) and they fixed it", 
+            "14:47:58.809"
+        ], 
+        [
+            "&lt;DeviaVir", 
+            "Asterfield: It does. But I thought maybe you would like to continue development while sorting out the SSL layer later", 
+            "14:48:09.572"
+        ], 
+        [
+            "&lt;Asterfield", 
+            "Ohh, I see the problem. I'm missing an intermediate in the chain. I guess the browsers just knew it existed?", 
+            "14:48:21.957"
+        ], 
+        [
+            "&lt;Asterfield", 
+            "Thanks DeviaVir!", 
+            "14:48:23.337"
+        ], 
+        [
+            "&lt;DeviaVir", 
+            "Asterfield: Seems browsers are more forgiving, I hear that's changing soon though :)", 
+            "14:49:51.489"
+        ], 
+        [
+            "&lt;Asterfield", 
+            "DeviaVir: Hopefully. With all the government nonsense happening recently, we need to crack down on security", 
+            "14:50:12.599"
+        ], 
+        [
+            "&lt;DeviaVir", 
+            "Asterfield: For some reading.. probably nothing you're not already aware of <a href=\"https://blog.filippo.io/the-unofficial-chrome-sha1-faq/\" target=\"_blank\" rel=\"nofollow\">https://blog.filippo.io/the-unofficial-chrome-sha1-faq/</a>", 
+            "14:52:50.124"
+        ], 
+        [
+            "&lt;Asterfield", 
+            "DeviaVir: Luckily I only have 1 SHA1 certificate left, but I appreciate the warning", 
+            "14:55:48.042"
+        ], 
+        [
+            "&lt;Leonw_", 
+            "Hi... PM2 watch flag can do reloads in case we are using clustered node or only restarts?", 
+            "14:55:55.297"
+        ], 
+        [
+            "&lt;Asterfield", 
+            "DeviaVir: I fixed my certificate chains and now everything is working as expected. Thanks a bunch for your help", 
+            "14:58:40.651"
+        ], 
+        [
+            "&lt;DeviaVir", 
+            "Asterfield: Awesome! No problem", 
+            "14:58:53.718"
+        ], 
+        [
+            "&lt;Trindaz", 
+            "With Mongoose If I use .populate twice, will that generate 2 separate queries to Mongo?", 
+            "15:03:51.042"
+        ], 
+        [
+            "&lt;asdf___", 
+            "hye", 
+            "15:14:25.477"
+        ], 
+        [
+            "&lt;asdf___", 
+            "hye", 
+            "15:14:43.452"
+        ], 
+        [
+            "&lt;asdf___", 
+            "any indian here", 
+            "15:14:51.714"
+        ], 
+        [
+            "&lt;asdf___", 
+            "how to learn nodejs", 
+            "15:15:24.743"
+        ], 
+        [
+            "&lt;laszlof", 
+            "heh", 
+            "15:15:25.485"
+        ], 
+        [
+            "&lt;Nemno76", 
+            "Hi, I've got a webworker-threads question.", 
+            "15:20:05.293"
+        ], 
+        [
+            "&lt;Nemno76", 
+            "I was trying to use var x=require('x'); in a worker thread and this doesn't work. Is it possible to use modules in the worker threads?", 
+            "15:22:46.966"
+        ], 
+        [
+            "&lt;Nemno76", 
+            "Here is the code <a href=\"https://gist.github.com/profOnno\" target=\"_blank\" rel=\"nofollow\">https://gist.github.com/profOnno</a>", 
+            "15:22:51.315"
+        ], 
+        [
+            "&lt;sunscript", 
+            "hi", 
+            "15:26:39.698"
+        ], 
+        [
+            "&lt;sunscript", 
+            "So instead using an index for retrieving an element in a hash by its id  (   elements[elementId]  ) I can also use a find() method in javascript?", 
+            "15:26:45.111"
+        ], 
+        [
+            "&lt;sunscript", 
+            "because this was recommended to me", 
+            "15:26:46.619"
+        ], 
+        [
+            "&lt;sunscript", 
+            "right?", 
+            "15:27:12.575"
+        ], 
+        [
+            "&lt;myndzi", 
+            "Nemno76: if it doesn't work, i think it's safe to assume you can't use it", 
+            "15:27:41.443"
+        ], 
+        [
+            "&lt;myndzi", 
+            ":P", 
+            "15:27:54.881"
+        ], 
+        [
+            "&lt;myndzi", 
+            "you might be interested in child_process.spawn", 
+            "15:28:41.289"
+        ], 
+        [
+            "&lt;joepie91", 
+            "Nemno76: no", 
+            "15:28:55.154"
+        ], 
+        [
+            "&lt;Nemno76", 
+            "@myndzi: I was hoping for something like require('magic') and it works.", 
+            "15:29:02.356"
+        ], 
+        [
+            "&lt;joepie91", 
+            "Nemno76: if you absolutely want to use webworker-threads, and the thing you're requiring is pure JS, you can use browserify", 
+            "15:29:09.705"
+        ], 
+        [
+            "&lt;myndzi", 
+            "require works when you spawn a new process", 
+            "15:29:10.146"
+        ], 
+        [
+            "&lt;joepie91", 
+            "but it's hacky", 
+            "15:29:20.911"
+        ], 
+        [
+            "&lt;joepie91", 
+            "and doesn't work with anything compiled", 
+            "15:29:26.301"
+        ], 
+        [
+            "&lt;joepie91", 
+            "(and there's more compiled stuff than you'd expect)", 
+            "15:29:53.024"
+        ], 
+        [
+            "&lt;Nemno76", 
+            "ok.. then i'll try to compile some native .c stuff", 
+            "15:30:38.318"
+        ], 
+        [
+            "&lt;sunscript", 
+            "anyone? :(", 
+            "15:30:48.921"
+        ], 
+        [
+            "&lt;sunscript", 
+            ":( :( :(", 
+            "15:31:01.565"
+        ], 
+        [
+            "&lt;yoshokatana", 
+            "sunscript I've never heard of this find() method", 
+            "15:31:12.064"
+        ], 
+        [
+            "&lt;joepie91", 
+            "Nemno76: spawning a child process and then using IPC is often a better method :)", 
+            "15:31:21.754"
+        ], 
+        [
+            "&lt;yoshokatana", 
+            "sunscript I guess Array has it, but Object doesn't", 
+            "15:31:39.203"
+        ], 
+        [
+            "&lt;yoshokatana", 
+            "ahhh, but it's es6", 
+            "15:31:43.128"
+        ], 
+        [
+            "&lt;yoshokatana", 
+            "<a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find\" target=\"_blank\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find</a>", 
+            "15:31:45.710"
+        ], 
+        [
+            "&lt;sunscript", 
+            "yoshokatana: using an id per element to retrieve it by id    using array[ id ] vs a find method like    find('id', array); ?", 
+            "15:32:25.864"
+        ], 
+        [
+            "&lt;yoshokatana", 
+            "...?", 
+            "15:32:39.351"
+        ], 
+        [
+            "&lt;Nemno76", 
+            "@joepie91 is trying to do some gpio stuff in a worker-thread and sleep between the pin toggles.", 
+            "15:33:02.067"
+        ], 
+        [
+            "&lt;joepie91", 
+            "Nemno76: that doesn't sound like you need a thread for that? or do you need highly accurate timing?", 
+            "15:33:18.150"
+        ], 
+        [
+            "&lt;sunscript", 
+            "hm", 
+            "15:34:00.181"
+        ], 
+        [
+            "&lt;sunscript", 
+            "so ES6 or whatever doesn't matter I use it in node", 
+            "15:34:08.108"
+        ], 
+        [
+            "&lt;yoshokatana", 
+            "sunscript Array#find is es6. If you're using babel or something, feel free to use it", 
+            "15:34:15.957"
+        ], 
+        [
+            "&lt;sunscript", 
+            "ok", 
+            "15:34:16.766"
+        ], 
+        [
+            "&lt;sunscript", 
+            "So Array.find vs index based - what is better?", 
+            "15:34:26.491"
+        ], 
+        [
+            "&lt;yoshokatana", 
+            "but I wouldn't assume node 0.12 or iojs support it yet (they might!)", 
+            "15:34:33.222"
+        ], 
+        [
+            "&lt;sunscript", 
+            "oh", 
+            "15:34:58.180"
+        ], 
+        [
+            "&lt;Nemno76", 
+            "@joepie91, would be nice if the timing is accurate.. PWM stuf, I'll end up using the a kernel version with pwm over gpio but i hoped to make a quick test run before.", 
+            "15:36:01.282"
+        ], 
+        [
+            "&lt;DeviaVir", 
+            "sunscript: you mean .indexOf on an array?", 
+            "15:36:36.595"
+        ], 
+        [
+            "&lt;joepie91", 
+            "Nemno76: right, for highly accurate timing (think sub-10ms timing) Node.js is probably not the most ideal option, at least not for the timing bits", 
+            "15:36:41.883"
+        ], 
+        [
+            "&lt;joepie91", 
+            "because you can very easily lock up the thread", 
+            "15:36:47.190"
+        ], 
+        [
+            "&lt;joepie91", 
+            "by taking a bit too long to compute something", 
+            "15:36:59.304"
+        ], 
+        [
+            "&lt;joepie91", 
+            "you *could* use setTimeout but it will suffer from the above", 
+            "15:37:01.372"
+        ], 
+        [
+            "&lt;joepie91", 
+            "if you compute things for 300ms, that means the timeout callback will likely be called 300ms late", 
+            "15:37:26.387"
+        ], 
+        [
+            "&lt;sunscript", 
+            "DeviaVir: indexOf means I have to use the resulting index then on the array?         array[Array.indexOf(...)] ?", 
+            "15:37:32.269"
+        ], 
+        [
+            "&lt;DeviaVir", 
+            "sunscript: if you're looking for the index, then yes", 
+            "15:38:22.266"
+        ], 
+        [
+            "&lt;sunscript", 
+            "DeviaVir: and when I want to access something very quickly by its id?", 
+            "15:38:27.274"
+        ], 
+        [
+            "&lt;sunscript", 
+            "and especially easily", 
+            "15:38:28.346"
+        ], 
+        [
+            "&lt;DeviaVir", 
+            "sunscript: if you already know the index (or id), array[index]", 
+            "15:38:49.208"
+        ], 
+        [
+            "&lt;Nemno76", 
+            "@joepie91 yes is used the setTimeout then chained the events... that works with the 'suffering' :p", 
+            "15:39:05.183"
+        ], 
+        [
+            "&lt;DeviaVir", 
+            "sunscript: why .find (which I haven't heard of) if you already know the index?", 
+            "15:39:11.140"
+        ], 
+        [
+            "&lt;yoshokatana", 
+            "sunscript if you have arr = ['foo', 'bar'], then arr[0] would be 'foo'. arr.indexOf('foo') would be 0", 
+            "15:39:17.715"
+        ], 
+        [
+            "&lt;sunscript", 
+            "yes", 
+            "15:39:36.106"
+        ], 
+        [
+            "&lt;sunscript", 
+            "yoshokatana: and when each item in array got its id, I also want to pick one of it from the array by its id.", 
+            "15:39:50.505"
+        ], 
+        [
+            "&lt;yoshokatana", 
+            "ok, then just do arr[id]", 
+            "15:39:53.322"
+        ], 
+        [
+            "&lt;sunscript", 
+            "items = [ { id: 1 }, { id: 2 }, { id: 3} ]", 
+            "15:39:57.386"
+        ], 
+        [
+            "&lt;sunscript", 
+            "ok, so I use them as keys", 
+            "15:39:58.876"
+        ], 
+        [
+            "&lt;yoshokatana", 
+            "ohhhhh", 
+            "15:40:00.057"
+        ], 
+        [
+            "&lt;sunscript", 
+            "alrgright", 
+            "15:40:10.992"
+        ], 
+        [
+            "&lt;lennym", 
+            "sunscript: If you need fast lookup then don't use an array", 
+            "15:40:14.713"
+        ], 
+        [
+            "&lt;yoshokatana", 
+            "^", 
+            "15:40:17.499"
+        ], 
+        [
+            "&lt;lennym", 
+            "sunscript: use an object", 
+            "15:40:24.048"
+        ], 
+        [
+            "&lt;sunscript", 
+            "ok!", 
+            "15:40:25.947"
+        ], 
+        [
+            "&lt;sunscript", 
+            "so keys as ids", 
+            "15:40:26.661"
+        ], 
+        [
+            "&lt;joepie91", 
+            "iteration, use an array - lookup, use an object", 
+            "15:40:31.402"
+        ], 
+        [
+            "&lt;yoshokatana", 
+            "yup", 
+            "15:40:33.393"
+        ], 
+        [
+            "&lt;sunscript", 
+            "{ 1: { id: 1, extra fields } }", 
+            "15:40:35.760"
+        ], 
+        [
+            "&lt;sunscript", 
+            "ok", 
+            "15:40:40.678"
+        ], 
+        [
+            "&lt;lennym", 
+            "If you need ordering *and* fast lookup then choose one ;-)", 
+            "15:41:17.992"
+        ], 
+        [
+            "&lt;yoshokatana", 
+            "if you *really* need them to be arrays of objects, this is handy: <a href=\"https://lodash.com/docs#filter\" target=\"_blank\" rel=\"nofollow\">https://lodash.com/docs#filter</a>", 
+            "15:41:28.108"
+        ], 
+        [
+            "&lt;yoshokatana", 
+            "or just Array#filter", 
+            "15:41:45.479"
+        ], 
+        [
+            "&lt;sunscript", 
+            "yoshokatana: but the key-based approach is best probably?", 
+            "15:42:20.151"
+        ], 
+        [
+            "&lt;yoshokatana", 
+            "yeah", 
+            "15:42:31.557"
+        ], 
+        [
+            "&lt;yoshokatana", 
+            "if you don't need those objects in a specific order, definitely", 
+            "15:42:59.018"
+        ], 
+        [
+            "&lt;sunscript", 
+            "ok", 
+            "15:42:59.223"
+        ], 
+        [
+            "&lt;myndzi", 
+            "if you need fast lookup, why would an object be better than an array?", 
+            "15:43:16.788"
+        ], 
+        [
+            "&lt;yoshokatana", 
+            "myndzi it's constant time", 
+            "15:43:19.717"
+        ], 
+        [
+            "&lt;myndzi", 
+            "as long as you keep the array consecutive you get an indexed lookup instead of a hash lookup", 
+            "15:43:36.073"
+        ], 
+        [
+            "&lt;myndzi", 
+            "yeah, but an array is a FASTER constant time :P", 
+            "15:43:40.701"
+        ], 
+        [
+            "&lt;myndzi", 
+            "direct index instead of a hash", 
+            "15:43:48.011"
+        ], 
+        [
+            "&lt;myndzi", 
+            "even then it falls back to an object using hashes", 
+            "15:43:58.274"
+        ], 
+        [
+            "&lt;yoshokatana", 
+            "sunscript is trying to match a property inside an object inside the array, not just grab array[index]", 
+            "15:44:19.016"
+        ], 
+        [
+            "&lt;sunscript", 
+            "yes, something like this", 
+            "15:44:47.328"
+        ], 
+        [
+            "&lt;sunscript", 
+            "it has been already looked up from database (orm)", 
+            "15:44:51.200"
+        ], 
+        [
+            "&lt;myndzi", 
+            "if the property is an integer id value that's sequential, that's kind of a natural fit for an array :P", 
+            "15:45:12.155"
+        ], 
+        [
+            "&lt;yoshokatana", 
+            "true", 
+            "15:45:26.550"
+        ], 
+        [
+            "&lt;sunscript", 
+            "but only when the orm/query sorted it using it", 
+            "15:45:35.862"
+        ], 
+        [
+            "&lt;myndzi", 
+            "but you'd still have to do some work to ensure the indexes match the properties so meh", 
+            "15:45:41.795"
+        ], 
+        [
+            "&lt;yoshokatana", 
+            "yeah haha", 
+            "15:45:43.258"
+        ], 
+        [
+            "&lt;myndzi", 
+            "tbh the difference is not significant i imagine, you'd use whatever makes the most sense", 
+            "15:46:13.366"
+        ], 
+        [
+            "&lt;lennym", 
+            "sunscript: Also, check out <a href=\"http://underscorejs.org/#findWhere\" target=\"_blank\" rel=\"nofollow\">http://underscorejs.org/#findWhere</a> and <a href=\"https://lodash.com/docs#findWhere\" target=\"_blank\" rel=\"nofollow\">https://lodash.com/docs#findWhere</a>", 
+            "15:46:27.482"
+        ], 
+        [
+            "&lt;myndzi", 
+            "but i don't think it's correct to say an object lookup is faster than an array lookup is all", 
+            "15:46:40.555"
+        ], 
+        [
+            "&lt;sunscript", 
+            "easier / more intuitive?", 
+            "15:47:03.882"
+        ], 
+        [
+            "&lt;sunscript", 
+            "OK, so when I got an item (a reference to it) and I want to remove it from the array, can I use delete?", 
+            "15:47:25.215"
+        ], 
+        [
+            "&lt;sunscript", 
+            "I mean, I use delete this way: delete array[index]", 
+            "15:47:49.897"
+        ], 
+        [
+            "&lt;sunscript", 
+            "when I do something like    item = array[0];       and later I got this item and I want to remove it from this particular array?", 
+            "15:47:56.150"
+        ], 
+        [
+            "&lt;myndzi", 
+            "you want splice", 
+            "15:47:58.468"
+        ], 
+        [
+            "&lt;sunscript", 
+            "I don't know the index - but I got the item reference.", 
+            "15:48:00.078"
+        ], 
+        [
+            "&lt;sunscript", 
+            "ah, splice", 
+            "15:48:17.101"
+        ], 
+        [
+            "&lt;myndzi", 
+            "well, maybe", 
+            "15:48:23.280"
+        ], 
+        [
+            "&lt;myndzi", 
+            "depends on what you want to happen to the other indices", 
+            "15:48:39.913"
+        ], 
+        [
+            "&lt;myndzi", 
+            "in general you want to avoid delete, i think it has deoptimization penalties or something like that", 
+            "15:48:43.608"
+        ], 
+        [
+            "&lt;sunscript", 
+            "ah", 
+            "15:48:48.941"
+        ], 
+        [
+            "&lt;myndzi", 
+            "so i'd say if you want to retain the indices set the 'deleted' one to null", 
+            "15:48:50.037"
+        ], 
+        [
+            "&lt;sunscript", 
+            "and I thought using it is great", 
+            "15:48:52.447"
+        ], 
+        [
+            "&lt;yoshokatana", 
+            "myndzi what I meant was that getting obj[index] is faster than doing, like, arr.filter(function (foo) { return foo === { id: whatever }; })", 
+            "15:48:52.611"
+        ], 
+        [
+            "&lt;myndzi", 
+            "if you want them to readjust use splice", 
+            "15:48:58.538"
+        ], 
+        [
+            "&lt;sunscript", 
+            "how to set it to null?", 
+            "15:49:03.828"
+        ], 
+        [
+            "&lt;myndzi", 
+            "yoshokatana: fair enough", 
+            "15:49:11.638"
+        ], 
+        [
+            "&lt;sunscript", 
+            "I mean, when I got an array, how can I set the right index to null when I only got the value (item)?", 
+            "15:49:14.640"
+        ], 
+        [
+            "&lt;myndzi", 
+            "but the same work that would have to be done to create an object you can do that on", 
+            "15:49:15.527"
+        ], 
+        [
+            "&lt;sunscript", 
+            "array, item", 
+            "15:49:16.915"
+        ], 
+        [
+            "&lt;myndzi", 
+            "could also be done to create an array you can do that on", 
+            "15:49:28.937"
+        ], 
+        [
+            "&lt;yoshokatana", 
+            "quite possibly, yeah", 
+            "15:49:41.504"
+        ], 
+        [
+            "&lt;yoshokatana", 
+            "I say we all just use Sets :p", 
+            "15:49:43.134"
+        ], 
+        [
+            "&lt;myndzi", 
+            "there's a module called hashtable", 
+            "15:49:44.598"
+        ], 
+        [
+            "&lt;sunscript", 
+            "now I am confused :/", 
+            "15:49:55.766"
+        ], 
+        [
+            "&lt;myndzi", 
+            "which is less performant but will let you use an object as a key", 
+            "15:49:57.117"
+        ], 
+        [
+            "&lt;sunscript", 
+            "I mean, for item being removed from array, javascript would have to compare the item with each item in the array?", 
+            "15:50:04.002"
+        ], 
+        [
+            "&lt;sunscript", 
+            "ah, so hash table", 
+            "15:50:11.804"
+        ], 
+        [
+            "&lt;myndzi", 
+            "if you have the item, you can remove it from an array with filter", 
+            "15:50:13.356"
+        ], 
+        [
+            "&lt;sunscript", 
+            "is there something lightweight / native I can use?", 
+            "15:50:17.901"
+        ], 
+        [
+            "&lt;myndzi", 
+            "or by using splice against array.indexOf(object)", 
+            "15:50:29.581"
+        ], 
+        [
+            "&lt;myndzi", 
+            "your best bet is to readjust your assumptions", 
+            "15:50:32.028"
+        ], 
+        [
+            "&lt;sunscript", 
+            "I want a handy function for this :P", 
+            "15:50:32.192"
+        ], 
+        [
+            "&lt;yoshokatana", 
+            "myndzi so... hashtable === es5 Map implementation, basically?", 
+            "15:50:37.651"
+        ], 
+        [
+            "&lt;myndzi", 
+            "there are ways to do what you want", 
+            "15:50:48.328"
+        ], 
+        [
+            "&lt;sunscript", 
+            "hm, maybe I stick with the key approach?", 
+            "15:50:50.729"
+        ], 
+        [
+            "&lt;myndzi", 
+            "but the most effective way is probably going to be to do something different than your current idea of what you want :P", 
+            "15:50:52.238"
+        ], 
+        [
+            "&lt;sunscript", 
+            "key == hash in some way", 
+            "15:50:57.522"
+        ], 
+        [
+            "&lt;myndzi", 
+            "for example, instead of deleting from the array by the object itself", 
+            "15:51:00.408"
+        ], 
+        [
+            "&lt;sunscript", 
+            "and comparing keys would be easy", 
+            "15:51:02.247"
+        ], 
+        [
+            "&lt;myndzi", 
+            "keep track of the index", 
+            "15:51:16.833"
+        ], 
+        [
+            "&lt;myndzi", 
+            "yoshokatana: maybe? i think there are some differences", 
+            "15:51:18.972"
+        ]
+    ]
+}
